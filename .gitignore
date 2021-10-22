@@ -39,3 +39,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# my own additions to the generated gitignore
+/vendor
