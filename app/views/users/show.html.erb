@@ -8,6 +8,22 @@
   <strong>Username:</strong>
   <%= @user.username %>
 </p>
+<p>
+  <strong>Points:</strong>
+  <%= @user.points %>
+</p>
+<p>
+  <strong>Gems:</strong>
+  <%= @user.gems %>
+</p>
+
+<p>
+  <strong>Bag Contents:</strong>
+  <ul>
+    <li>3 quarters</li>
+    <li>3 6-sided white dice</li>
+  <ul>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
