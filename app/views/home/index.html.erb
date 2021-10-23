@@ -2,7 +2,7 @@
 <p>Find me in app/views/home/index.html.erb</p>
 
 <% if current_user %>
-  Logged in as <%= current_user.email %>, username <%= current_user.username %>, with <%= current_user.points %> points and <%= current_user.gems %> gems.
+  Logged in as <%= current_user.email %>, username <%= current_user.username %>.
   <%= link_to "Log Out", logout_path %>
 
   <p>You have 3 quarters.</p>
