@@ -6,11 +6,15 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
+    user_auth = user.authenticate(params[:password])
+    if user && user_auth
       session[:user_id] = user.id
       redirect_to root_url, notice: "You are logged in."
+    elsif user
+      flash.now[:alert] = "Your password is wrong."
+      render :new
     else
-      flash.now[:alert] = "Your email or password is invalid"
+      flash.now[:alert] = "Your email and password is invalid or does not exist. Please sign up as a new user if you do not have an account set up yet."
       render :new
     end
   end
