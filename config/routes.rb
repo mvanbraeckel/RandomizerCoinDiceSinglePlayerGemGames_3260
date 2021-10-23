@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
   get 'home/index'
 
+  get "home", to: "home#index"
+
   # root "articles#index"
 
   get "/articles", to: "articles#index"
