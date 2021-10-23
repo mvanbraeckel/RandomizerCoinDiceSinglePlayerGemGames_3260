@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
-  get 'home/index'
 
+  get 'home/index'
   get "home", to: "home#index"
 
   # root "articles#index"
