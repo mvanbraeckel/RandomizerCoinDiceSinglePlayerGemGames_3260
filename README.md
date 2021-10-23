@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## my stuff
+
+- Source for sign-in and user pages and functionality: https://carsonrcole.com/blog/posts/rolling-your-own-authentication-in-rails-5
