@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_user
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
