@@ -31,10 +31,7 @@
     <%= form.text_field :colour %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%= form.hidden_field :user_id, value: session[:user_id] %>
 
   <div class="actions">
     <%= form.submit %>

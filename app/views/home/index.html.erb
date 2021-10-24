@@ -13,7 +13,12 @@
     Purchase Items
   </p>
 
-  <p><strong>Bag Contents:</strong></p>
+  <h2><%= link_to 'Bag Contents', items_path %></h2>
+  <ul>
+    <% render @user.items %>
+  </ul>
+
+  <p><strong>Hardcoded Bag Contents:</strong></p>
   <ul>
     <li>{item: coin, denomination: 0.25}</li>
     <li>{item: coin, denomination: 0.25}</li>

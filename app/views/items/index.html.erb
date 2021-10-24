@@ -5,11 +5,11 @@
 <table>
   <thead>
     <tr>
+      <th>User</th>
       <th>Item</th>
       <th>Denomination</th>
       <th>Sides</th>
       <th>Colour</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,11 +17,11 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= item.user_id %></td>
         <td><%= item.item %></td>
         <td><%= item.denomination %></td>
         <td><%= item.sides %></td>
         <td><%= item.colour %></td>
-        <td><%= item.user_id %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -32,4 +32,5 @@
 
 <br>
 
+<%= link_to 'Back', users_path %> |
 <%= link_to 'New Item', new_item_path %>
