@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :items
   root to: "home#index"
 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users
+  resources :users do
+    resources :items
+  end
 
   get "signup", to: "users#new", as: "signup"
   get "login", to: "sessions#new", as: "login"
