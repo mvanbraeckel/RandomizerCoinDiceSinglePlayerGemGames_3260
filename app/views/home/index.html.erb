@@ -3,13 +3,15 @@
 
 <% if current_user %>
   Logged in as <%= current_user.email %>, username <%= current_user.username %>, with <%= current_user.points %> points and <%= current_user.gems %> gems.
-  <%= link_to "Log Out", logout_path %>
 
   <p><strong>Bag Contents:</strong></p>
   <ul>
     <li>3 quarters</li>
     <li>3 6-sided white dice</li>
   </ul>
+
+  <p><%= link_to "Log Out", logout_path %> || <%= link_to "Delete Account", user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <p>Play Game || Purchase Items</p>
 
 <% else %>
   <%= link_to "Log In", login_path %> or

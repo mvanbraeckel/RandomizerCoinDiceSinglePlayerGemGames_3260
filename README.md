@@ -36,3 +36,4 @@ Things you may want to cover:
 - user's page
   - go to base URL, `/home`, or `/home#index`
     - shows username, email, poitns, gems, and bag contents
+    - can sign out and it returns to sign in page
