@@ -10,7 +10,7 @@
     <li>3 6-sided white dice</li>
   </ul>
 
-  <p><%= link_to "Log Out", logout_path %> || <%= link_to "Delete Account", user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <p><%= link_to "Log Out", logout_path %> || <%= link_to "Delete Account", current_user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
   <p>Play Game || Purchase Items</p>
 
 <% else %>
