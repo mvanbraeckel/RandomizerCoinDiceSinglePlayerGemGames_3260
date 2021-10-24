@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
@@ -63,6 +65,9 @@ class ItemsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:user_id])
+    end
     def set_item
       @item = Item.find(params[:id])
     end

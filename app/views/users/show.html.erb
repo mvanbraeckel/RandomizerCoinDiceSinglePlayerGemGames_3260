@@ -22,7 +22,7 @@
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<h2><%= link_to 'Bag Contents', user_items_path %></h2>
+<h2><%= link_to 'Bag Contents', user_items_path(@user) %></h2>
 <ul>
   <% render @user.items %>
 </ul>
