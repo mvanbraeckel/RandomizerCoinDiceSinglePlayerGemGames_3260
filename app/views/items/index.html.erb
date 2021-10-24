@@ -17,13 +17,13 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.user_id %></td> <!-- make this be user email instead? -->
+        <td><%= item.user_id %></td> <!-- <td><%= User.find(item.user_id).email %></td> -->
         <td><%= item.item %></td>
         <td><%= item.denomination %></td>
         <td><%= item.sides %></td>
         <td><%= item.colour %></td>
         <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_user_item_path(@user, item) %></td>
+        <td><%= link_to 'Edit', edit_user_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -33,4 +33,4 @@
 <br>
 
 <%= link_to 'Back', users_path %> |
-<%= link_to 'New Item', new_user_item_path(@user) %>
+<%= link_to 'New Item', new_user_item_path(@user.id) %>
