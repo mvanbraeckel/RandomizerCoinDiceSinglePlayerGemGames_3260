@@ -18,10 +18,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1/edit
-  def edit
-  end
-
   # POST /users
   # POST /users.json
   def create
@@ -38,6 +34,10 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /users/1/edit
+  def edit
   end
 
   # PATCH/PUT /users/1
