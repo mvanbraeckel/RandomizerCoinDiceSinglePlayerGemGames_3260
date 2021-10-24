@@ -31,8 +31,8 @@
     <%= form.password_field :password_confirmation %>
   </div> -->
 
-  <input id="points" name="points" type="hidden" value=0/>
-  <input id="gems" name="gems" type="hidden" value=0/>
+  <%= hidden_field_tag(:points, 0) %>
+  <%= hidden_field_tag(:gems, 0) %>
 
   <div class="actions">
     <%= form.submit %>
