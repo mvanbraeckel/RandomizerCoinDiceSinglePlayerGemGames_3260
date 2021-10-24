@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @item.item %>
+</p>
+
+<p>
+  <strong>Denomination:</strong>
+  <%= @item.denomination %>
+</p>
+
+<p>
+  <strong>Sides:</strong>
+  <%= @item.sides %>
+</p>
+
+<p>
+  <strong>Colour:</strong>
+  <%= @item.colour %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @item.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

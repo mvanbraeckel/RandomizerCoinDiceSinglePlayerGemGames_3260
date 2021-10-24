@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: MyString
+  denomination: 1.5
+  sides: 1
+  colour: MyString
+  user: one
+
+two:
+  item: MyString
+  denomination: 1.5
+  sides: 1
+  colour: MyString
+  user: two
