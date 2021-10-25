@@ -1,8 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
 
-  validates :item, inclusion: { in: %w(coin die),
-    message: "type '%{value}' is not a valid item - must be 'coin' or 'die'" }
+  validates :item, inclusion: { in: %w(coin die), message: "type '%{value}' is not a valid item - must be 'coin' or 'die'" }
 
   with_options if: :is_coin? do |coin|
     coin.validates :denomination, presence: true, numericality: { greater_than: 0.0 },
