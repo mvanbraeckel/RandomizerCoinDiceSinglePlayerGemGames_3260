@@ -18,19 +18,19 @@ class PurchaseItemsController < ApplicationController
 
     item_cost = 2
 
-    if params[:item] == "coin" || params[:item] == :coin
-      @item = current_user.items.create(item: params[:item], denomination: params[:denomination])
-    elsif params[:item] == "die" || params[:item] == :die
-      item_cost = @item.sides
-      @item = current_user.items.create(item: params[:item], sides: params[:sides], colour: params[:colour])
-    end
-
-    # if @item.item == "coin" || @item.item == :coin
-    #   # current_user.items.create(item: params[:item], denomination: params[:denomination])
-    # elsif @item.item == "die" || @item.item == :die
+    # if params[:item] == "coin" || params[:item] == :coin
+    #   @item = current_user.items.create(item: params[:item], denomination: params[:denomination])
+    # elsif params[:item] == "die" || params[:item] == :die
     #   item_cost = @item.sides
-    #   # current_user.items.create(item: params[:item], sides: params[:sides], colour: params[:colour])
+    #   @item = current_user.items.create(item: params[:item], sides: params[:sides], colour: params[:colour])
     # end
+
+    if @item.item == "coin" || @item.item == :coin
+      current_user.items.create(item: params[:item], denomination: params[:denomination])
+    elsif @item.item == "die" || @item.item == :die
+      item_cost = @item.sides
+      current_user.items.create(item: params[:item], sides: params[:sides], colour: params[:colour])
+    end
 
     # @item = current_user.items.create(purchase_item_params)
 
@@ -64,5 +64,11 @@ class PurchaseItemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def purchase_item_params
       params.require(:item).permit(:item, :denomination, :sides, :colour, :user_id)
+    end
+    def purchase_coin_params
+      params.require(:item).permit(:item, :denomination, :user_id)
+    end
+    def purchase_die_params
+      params.require(:item).permit(:item, :sides, :colour, :user_id)
     end
 end
