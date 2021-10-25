@@ -26,9 +26,9 @@
 <ul>
   <% @user.items.each do |item| %>
     <% if item.item == :coin || item.item == "coin" %>
-      <li>{item: <%= item.item %>, denomination: <% item.denomination %>}</li>
+      <li>{item: <%= item.item %>, denomination: <%= item.denomination %>}</li>
     <% elsif item.item == :die || item.item == "die" %>
-      <li>{item: <%= item.item %>, sides: <% item.sides %>, colour: <% item.colour %>}</li>
+      <li>{item: <%= item.item %>, sides: <%= item.sides %>, colour: <%= item.colour %>}</li>
     <% else %>
       <li>{item: <%= item.item %> (unknown)}</li>
     <% end %>
