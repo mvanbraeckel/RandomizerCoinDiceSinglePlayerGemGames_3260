@@ -12,7 +12,7 @@
 
 <p>
   <strong>Denomination:</strong>
-  <%= number_to_currency(@item.denomination) %>
+  <%= number_with_precision(@item.denomination, precision: 2) %>
 </p>
 
 <p>
