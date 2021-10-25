@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  get "purchase_items", to: "items#purchase_items", as: "purchase_items"
-  get "create_purchased_item", controller: "items", action: :create_purchased_item, as: "create_purchased_item"
+  # get "purchase_items", to: "items#purchase_items", as: "purchase_items"
+  # get "create_purchased_item", controller: "items", action: :create_purchased_item, as: "create_purchased_item"
 
   get "signup", to: "users#new", as: "signup"
   get "login", to: "sessions#new", as: "login"
