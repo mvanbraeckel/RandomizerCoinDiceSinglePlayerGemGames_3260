@@ -19,13 +19,11 @@ class PurchaseItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        flash.now[:alert] = "Params #{params}"
-        format.html { redirect_to new_purchase_item_path, notice: 'Item was successfully purchased. Params #{params}' }
-        format.json { render :show, status: :created, location: @item, notice: "Params #{params}" }
+        format.html { redirect_to new_purchase_item_path, notice: 'Item was successfully purchased.' }
+        format.json { render :show, status: :created, location: @item }
       else
-        flash.now[:alert] = "Params #{params}"
-        format.html { render :new, notice: "Params #{params}" }
-        format.json { render json: @item.errors, status: :unprocessable_entity, notice: "Params #{params}" }
+        format.html { render :new, notice: 'Params #{params}' }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
