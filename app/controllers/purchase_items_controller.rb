@@ -1,4 +1,6 @@
 class PurchaseItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+
   # GET /purchase_items/1
   # GET /purchase_items/1.json
   def show
@@ -34,6 +36,11 @@ class PurchaseItemsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_item
+      @item = current_user.items.find(params[:id])
+    end
+
     # Only allow a list of trusted parameters through.
     def purchase_item_params
       params.require(:item).permit(:item, :denomination, :sides, :colour, :user_id)
