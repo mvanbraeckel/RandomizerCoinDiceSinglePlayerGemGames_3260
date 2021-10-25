@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  after_action :init_starting_items, only [:create]
 
   # GET /users
   # GET /users.json
@@ -27,11 +28,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        for i in 0..2
-          @user.items.create(item: :coin, denomination: 0.25)
-          @user.items.create(item: :die, sides: 6, colour: :white)
-        end
-
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -80,5 +76,13 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :email, :password, :password_confirmation, :points, :gems)
     end
 
-    # 
+    # Use this to create 3 quartes and 3 white d6 for after signup
+    def init_starting_items
+      if @user.save
+        for i in 0..2
+          @user.items.create(item: :coin, denomination: 0.25)
+          @user.items.create(item: :die, sides: 6, colour: :white)
+        end
+      end
+    end
 end
