@@ -26,10 +26,10 @@ class PurchaseItemsController < ApplicationController
     # end
 
     if @item.item == "coin" || @item.item == :coin
-      current_user.items.create(purchase_coin_params)
+      @item = current_user.items.create(purchase_coin_params)
     elsif @item.item == "die" || @item.item == :die
       item_cost = @item.sides
-      current_user.items.create(purchase_die_params)
+      @item = current_user.items.create(purchase_die_params)
     end
 
     # @item = current_user.items.create(purchase_item_params)
