@@ -1,4 +1,4 @@
-<h1>Play a Game</h1>
+<h1>Play Game Results</h1>
 <p id="alert"><%= alert %></p>
 <p id="notice"><%= notice %></p>
 
@@ -37,5 +37,52 @@ In this simple game, this multiplication factor will always equal 1. You also ea
 
 <p>Computer sets game goal: <strong>Simple Game</strong></p>
 
+<h3>--- Simple Game ---</h3>
+
+<p>Rolling all the player's items.</p>
+
+<%# Get all the user's items, roll them all and append to an array the result %>
+<%# Loop through results from user, sum them all up %>
+
+<%# Do the same thing again, but for the computer %>
+
+<%# Determine who won, including messages to display, etc. %>
+<%# For player win, properly display and increase earned points and gems based on the math, then save the user. %>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Your Results</th>
+      <th>Computer Results</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><strong>Throw Roll Results:</strong></td>
+      <td>[blank]</td>
+      <td>[blank]</td>
+    </tr>
+    <tr>
+      <td><strong>Throw Roll Totals:</strong></td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>---</p>
+
+<h4>No contest! Better luck next time...</h4>
+
+<p>
+  <ul>
+    <li>You earned 0 points!</li>
+    <li>You earned 0 gems!</li>
+  </ul>
+</p>
+
 <%= link_to 'Exit', root_path %> |
-<%= link_to 'Play Game', playgame_path %>
+<%= link_to 'Back', games_path %> |
+<%= link_to 'Play Again', playgame_path %>
