@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @item.user_id %> <!-- <%= User.find(@item.user_id).email %> -->
+  <%= @item.user_id %> <!-- todo mvb <%= User.find(@item.user_id).email %> -->
 </p>
 
 <p>
@@ -27,5 +27,5 @@
 
 
 <%= link_to 'Back', user_items_path(@item) %> |
-<%= link_to 'Edit', edit_user_item_path(@item) %><!-- |
+<%= link_to 'Edit', edit_user_item_path(@item) %><!-- todo mvb |
 <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %> -->
