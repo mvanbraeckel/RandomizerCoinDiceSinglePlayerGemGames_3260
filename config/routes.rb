@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :purchase_items
   resource :game
 
-  get "playgame", to: "game#index", as: "playgame"
-  get "showgame", to: "game#show", as: "showgame"
+  get "playgame", to: "games#index", as: "playgame"
+  get "showgame", to: "games#show", as: "showgame"
 
   get "signup", to: "users#new", as: "signup"
   get "login", to: "sessions#new", as: "login"
