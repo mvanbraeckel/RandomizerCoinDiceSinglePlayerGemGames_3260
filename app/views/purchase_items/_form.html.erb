@@ -26,13 +26,13 @@
   <div class="field">
     <%= form.label :item %>
     <%# <%= form.text_field :item %>
-    <%= form.select :item, ["", "coin", "die"] %>
+    <%= form.select :item, [["", nil], "coin", "die"] %>
   </div>
 
   <div class="field">
     <%= form.label :denomination %>
     <%# <%= form.text_field :denomination %>
-    <%= form.select :denomination, [["", 0.00], ["0.05", 0.05], ["0.10", 0.10], ["0.25", 0.25], ["1.00", 1.00], ["2.00", 2.00]] %>
+    <%= form.select :denomination, [["", nil], ["0.05", 0.05], ["0.10", 0.10], ["0.25", 0.25], ["1.00", 1.00], ["2.00", 2.00]] %>
   </div>
 
   <div class="field">
@@ -43,7 +43,7 @@
   <div class="field">
     <%= form.label :colour %>
     <%# <%= form.text_field :colour %>
-    <%= form.select :colour, ["", "red", "green", "blue", "yellow", "black", "white"] %>
+    <%= form.select :colour, [["", nil], "red", "green", "blue", "yellow", "black", "white"] %>
   </div>
 
   <%= form.hidden_field :user_id, value: user.id %>
