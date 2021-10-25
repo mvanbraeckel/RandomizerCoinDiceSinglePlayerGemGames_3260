@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :items
   end
+  resources :purchase_items
 
   # get "purchase_items", to: "items#purchase_items", as: "purchase_items"
   # get "create_purchased_item", controller: "items", action: :create_purchased_item, as: "create_purchased_item"

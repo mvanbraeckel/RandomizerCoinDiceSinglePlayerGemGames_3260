@@ -1,8 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_user
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  skip_before_action :set_user, only: [:purchase_items]
-  skip_before_action :set_item, only: [:purchase_items]
 
   # GET /items
   # GET /items.json
@@ -13,25 +11,6 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-  end
-
-  # for the purchase items page
-  def purchase_items
-    @item = Item.new
-  end
-
-  def create_purchased_item
-    @item = current_user.items.create(item_params)
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to user_item_path(current_user, @item), notice: 'Item was successfully purchased.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # GET /items/new
