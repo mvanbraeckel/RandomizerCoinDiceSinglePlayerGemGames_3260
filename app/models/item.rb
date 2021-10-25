@@ -5,7 +5,9 @@ class Item < ApplicationRecord
 
   with_options if: :is_coin? do |coin|
     coin.validates :denomination, presence: true, numericality: { greater_than: 0.0 }, format: { with: /\A(0.05|0.1|0.10|0.25|1|1.0|1.00|2|2.0|2.00)\z/,
-      message: "value '%{value}' is not a valid coin denomination." }
+      message: "value '%{value}' is not a valid coin denomination" }
+    coin.validates :denomination, format: { without: /\A[^0-9\.]+\z/,
+      message: "only allows coin denominations" }
     coin.validates :sides, presence: false, allow_blank: true
     coin.validates :colour, presence: false, allow_blank: true
   end
