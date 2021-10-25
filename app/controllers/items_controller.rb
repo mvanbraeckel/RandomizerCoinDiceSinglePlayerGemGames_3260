@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  skip_before_action :set_user, only: [:purchase_items]
-  skip_before_action :set_item, only: [:purchase_items]
   before_action :set_user
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  skip_before_action :set_user, only: [:purchase_items]
+  skip_before_action :set_item, only: [:purchase_items]
 
   # GET /items
   # GET /items.json
