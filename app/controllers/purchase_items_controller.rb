@@ -1,12 +1,12 @@
 class PurchaseItemsController < ApplicationController
   # GET /purchase_items/new
-  def purchase_items
+  def new
     @item = Item.new
   end
 
   # POST /purchase_items
   # POST /purchase_items.json
-  def create_purchased_item
+  def create
     @item = current_user.items.create(purchase_item_params)
 
     respond_to do |format|
