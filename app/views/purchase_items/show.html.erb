@@ -1,9 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= current_user.email %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Points</th>
+      <th>Gems</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><strong><%= current_user.email %></strong></td>
+      <td><%= current_user.points %></td>
+      <td><%= current_user.gems %></td>
+    </tr>
+  </tbody>
+</table>
 
 <% if @item.item == "coin" || @item.item == :coin %>
   <p>
