@@ -17,11 +17,11 @@ class Item < ApplicationRecord
   #     message: "%{value} is not a valid die colour" }
   # end
 
-  def is_coin
+  def is_coin?
     item == "coin"
   end
 
-  def is_die
+  def is_die?
     item == "die"
   end
 end
