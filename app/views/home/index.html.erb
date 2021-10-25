@@ -9,7 +9,7 @@
     <%= link_to "Delete Account", current_user, method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
   <p>
-    Play a Game |
+    <%= link_to "Play a Game", playgame_path %> |
     <%= link_to "Purchase Items", new_purchase_item_path %>
   </p>
 

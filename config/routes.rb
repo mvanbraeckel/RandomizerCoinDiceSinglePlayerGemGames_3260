@@ -6,9 +6,10 @@ Rails.application.routes.draw do
     resources :items
   end
   resources :purchase_items
+  resource :game
 
-  # get "purchase_items", to: "items#purchase_items", as: "purchase_items"
-  # get "create_purchased_item", controller: "items", action: :create_purchased_item, as: "create_purchased_item"
+  get "playgame", to: "game#index", as: "playgame"
+  get "showgame", to: "game#show", as: "showgame"
 
   get "signup", to: "users#new", as: "signup"
   get "login", to: "sessions#new", as: "login"
