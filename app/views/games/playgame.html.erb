@@ -116,6 +116,7 @@
     <li>You earned <%= @points_won %> points!</li>
     <li>You earned <%= @gems_won %> gems!</li>
   </ul>
+  You now have <%= current_user.points %> points and <%= current_user.gems %> gems!
 </p>
 
 <%= link_to 'Exit', root_path %> |
