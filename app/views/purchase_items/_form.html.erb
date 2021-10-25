@@ -30,7 +30,8 @@
 
   <div class="field">
     <%= form.label :denomination %>
-    <%= form.text_field :denomination %>
+    <%# <%= form.text_field :denomination %>
+    <%= form.select :denomination, [0.05, 0.1, 0.25, 1.00, 2.00] %>
   </div>
 
   <div class="field">
@@ -40,7 +41,8 @@
 
   <div class="field">
     <%= form.label :colour %>
-    <%= form.text_field :colour %>
+    <%# <%= form.text_field :colour %>
+    <%= form.select :colour, ["red", "green", "blue", "yellow", "black", "white"] %>
   </div>
 
   <%= form.hidden_field :user_id, value: user.id %>
