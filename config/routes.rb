@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resource :game
 
   get "playgame", to: "games#index", as: "playgame"
-  get "showgame", to: "games#show", as: "showgame"
+  # get "showgame", to: "games#show", as: "showgame"
 
   get "signup", to: "users#new", as: "signup"
   get "login", to: "sessions#new", as: "login"
