@@ -17,11 +17,22 @@ class PurchaseItemsController < ApplicationController
     @item = Item.new(purchase_item_params)
 
     item_cost = 2
-    if @item.item == "die" || @item.item == :die
+
+    if params[:item] == "coin" || params[:item] == :coin
+      @item = current_user.items.create(item: params[:item], params[:denomination])
+    elsif params[:item] == "die" || params[:item] == :die
       item_cost = @item.sides
+      @item = current_user.items.create(item: params[:item], params[:sides], params[:colour])
     end
 
-    @item = current_user.items.create(purchase_item_params)
+    # if @item.item == "coin" || @item.item == :coin
+    #   # current_user.items.create(item: params[:item], params[:denomination])
+    # elsif @item.item == "die" || @item.item == :die
+    #   item_cost = @item.sides
+    #   # current_user.items.create(item: params[:item], params[:sides], params[:colour])
+    # end
+
+    # @item = current_user.items.create(purchase_item_params)
 
     if !item_cost
       flash.now[:alert] = "Purchase refused. Please input a number of sides for the die you want to purchase."

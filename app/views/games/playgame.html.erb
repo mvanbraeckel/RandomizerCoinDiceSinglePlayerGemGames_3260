@@ -29,6 +29,18 @@
 <p>Rolling all the player's items.</p>
 
 <%# Get all the user's items, roll them all and append to an array the result %>
+<%# <% @items = current_user.items%>
+<%# <% @player_results = []%>
+<%# <% for item in @items %>
+<%#   <% if item.item == "coin" || item.item == :coin %>
+<%#     <% @player_results << (rand(2) == 0 ? :T : :H) %>
+<%#   <% elsif item.item == "die" || item.item == :die %>
+<%#     <% @player_results << (1 + rand(die.sides)) %>
+<%#   <% else %>
+<%#     <% @player_results << 0 %>
+<%#   <% end %>
+<%# <% end %>
+
 <%# Loop through results from user, sum them all up %>
 
 <%# Do the same thing again, but for the computer %>
