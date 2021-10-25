@@ -11,7 +11,7 @@ class PurchaseItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to user_item_path(current_user, @item), notice: 'Item was successfully purchased.' }
+        format.html { redirect_to new_purchase_item_path, notice: 'Item was successfully purchased.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
