@@ -1,4 +1,9 @@
 class PurchaseItemsController < ApplicationController
+  # GET /purchase_items/1
+  # GET /purchase_items/1.json
+  def show
+  end
+
   # GET /purchase_items/new
   def new
     @item = Item.new
@@ -19,7 +24,7 @@ class PurchaseItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to new_purchase_item_path, notice: 'Item was successfully purchased.' }
+        format.html { redirect_to purchase_item_path, notice: 'Item was successfully purchased. Params #{params}' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, notice: 'Params #{params}' }
