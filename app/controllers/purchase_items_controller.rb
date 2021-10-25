@@ -19,17 +19,17 @@ class PurchaseItemsController < ApplicationController
     item_cost = 2
 
     if params[:item] == "coin" || params[:item] == :coin
-      @item = current_user.items.create(item: params[:item], params[:denomination])
+      @item = current_user.items.create(item: params[:item], denomination: params[:denomination])
     elsif params[:item] == "die" || params[:item] == :die
       item_cost = @item.sides
-      @item = current_user.items.create(item: params[:item], params[:sides], params[:colour])
+      @item = current_user.items.create(item: params[:item], sides: params[:sides], colour: params[:colour])
     end
 
     # if @item.item == "coin" || @item.item == :coin
-    #   # current_user.items.create(item: params[:item], params[:denomination])
+    #   # current_user.items.create(item: params[:item], denomination: params[:denomination])
     # elsif @item.item == "die" || @item.item == :die
     #   item_cost = @item.sides
-    #   # current_user.items.create(item: params[:item], params[:sides], params[:colour])
+    #   # current_user.items.create(item: params[:item], sides: params[:sides], colour: params[:colour])
     # end
 
     # @item = current_user.items.create(purchase_item_params)
