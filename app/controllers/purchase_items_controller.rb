@@ -26,7 +26,7 @@ class PurchaseItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to purchase_item_path(@item), notice: 'Item was successfully purchased. Params #{params}' }
+        format.html { redirect_to purchase_item_path(@item), notice: 'Item was successfully purchased.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, notice: 'Params #{params}' }

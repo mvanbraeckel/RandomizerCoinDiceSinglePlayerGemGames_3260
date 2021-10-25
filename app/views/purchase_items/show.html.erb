@@ -5,25 +5,36 @@
   <%= current_user.email %>
 </p>
 
-<p>
-  <strong>Item:</strong>
-  <%= @item.item %>
-</p>
+<% if @item.item == "coin" || @item.item == :coin %>
+  <p>
+    <strong>Item:</strong>
+    <%= @item.item %>
+  </p>
+  <p>
+    <strong>Denomination:</strong>
+    <%= number_with_precision(@item.denomination, precision: 2) %>
+  </p>
 
-<p>
-  <strong>Denomination:</strong>
-  <%= number_with_precision(@item.denomination, precision: 2) %>
-</p>
+<% elsif @item.item == "die" || @item.item == :die %>
+  <p>
+    <strong>Item:</strong>
+    <%= @item.item %>
+  </p>
+  <p>
+    <strong>Sides:</strong>
+    <%= @item.sides %>
+  </p>
+  <p>
+    <strong>Colour:</strong>
+    <%= @item.colour %>
+  </p>
 
-<p>
-  <strong>Sides:</strong>
-  <%= @item.sides %>
-</p>
-
-<p>
-  <strong>Colour:</strong>
-  <%= @item.colour %>
-</p>
+<% else %>
+  <p>
+    <strong>Item:</strong>
+    <%= @item.item %> (unknown)
+  </p>
+<% end %>
 
 
 <%= link_to 'Exit Back to Home', root_path %> |
