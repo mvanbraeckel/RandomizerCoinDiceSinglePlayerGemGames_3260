@@ -52,8 +52,6 @@ class PurchaseItemsController < ApplicationController
       flash.now[:alert] = "#{alert_text}"
       render :new
     else
-      current_user.gems -= item_cost
-
       respond_to do |format|
         if @item.save
           current_user.gems -= item_cost
