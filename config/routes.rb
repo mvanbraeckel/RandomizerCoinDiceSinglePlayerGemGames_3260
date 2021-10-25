@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :items
   end
   resources :purchase_items
-  resource :game
+  resource :games
 
   get "playgame", to: "games#index", as: "playgame"
   # get "showgame", to: "games#show", as: "showgame"
