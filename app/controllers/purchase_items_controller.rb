@@ -35,7 +35,7 @@ class PurchaseItemsController < ApplicationController
       @item = current_user.items.create(purchase_coin_params)
     elsif @item.item == "die" || @item.item == :die
       if @item.denomination
-        flash.now[:alert] += "Purchase alert: ignored denomination '#{number_with_precision(@item.denomination, precision: 2)}' when purchasing the die.\n"
+        flash.now[:alert] += "Purchase alert: ignored denomination '#{@item.denomination}' when purchasing the die.\n"
       end
       item_cost = @item.sides
       @item = current_user.items.create(purchase_die_params)
