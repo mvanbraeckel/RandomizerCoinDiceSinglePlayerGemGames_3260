@@ -1,6 +1,6 @@
 <h1>Editing Item</h1>
 
-<%= render 'form', user: @user %>
+<%= render 'form', user: @user, item: @item %>
 
 <%= link_to 'Show', user_item_path(@user, @item) %> |
 <%= link_to 'Back', user_items_path(@user) %>
