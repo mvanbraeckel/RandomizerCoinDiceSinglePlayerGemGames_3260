@@ -25,13 +25,14 @@
 
   <div class="field">
     <%= form.label :item %>
-    <%= form.text_field :item %>
+    <%# <%= form.text_field :item %>
+    <%= form.select :item, ["coin", "die"] %>
   </div>
 
   <div class="field">
     <%= form.label :denomination %>
     <%# <%= form.text_field :denomination %>
-    <%= form.select :denomination, [0.05, 0.1, 0.25, 1.00, 2.00] %>
+    <%= form.select :denomination, [["0.05", 0.05], ["0.10", 0.10], ["0.25", 0.25], ["1.00", 1.00], ["2.00", 2.00]] %>
   </div>
 
   <div class="field">
