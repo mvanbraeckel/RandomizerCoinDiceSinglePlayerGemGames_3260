@@ -7,13 +7,13 @@ class PurchaseItemsController < ApplicationController
   # POST /purchase_items
   # POST /purchase_items.json
   def create
-    @item = Item.new
-    respond_to do |format|
-      if current_user.gems < 100
-        format.html { render :new, notice: 'Params #{params}' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    # @item = Item.new
+    # respond_to do |format|
+    #   if current_user.gems < 100
+    #     format.html { render :new, notice: 'Params #{params}' }
+    #     format.json { render json: @item.errors, status: :unprocessable_entity }
+    #   end
+    # end
 
     @item = current_user.items.create(purchase_item_params)
 
@@ -22,7 +22,7 @@ class PurchaseItemsController < ApplicationController
         format.html { redirect_to new_purchase_item_path, notice: 'Item was successfully purchased.' }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'Params #{params}' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
