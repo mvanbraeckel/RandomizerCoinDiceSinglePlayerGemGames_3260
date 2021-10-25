@@ -43,7 +43,7 @@
     <%= form.text_field :colour %>
   </div>
 
-  <%= form.hidden_field :user_id, value: params[:user_id] %>
+  <%= form.hidden_field :user_id, value: user.id %>
 
   <div class="actions">
     <%= form.submit %>

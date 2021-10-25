@@ -20,6 +20,20 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def create_purchased_item
+    @item = current_user.items.create(item_params)
+
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to user_item_path(current_user, @item), notice: 'Item was successfully purchased.' }
+        format.json { render :show, status: :created, location: @item }
+      else
+        format.html { render :new }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /items/new
   def new
     @item = Item.new

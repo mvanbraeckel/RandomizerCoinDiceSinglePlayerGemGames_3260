@@ -1,7 +1,7 @@
 <%= form_with(model: [ user, user.items.build ], local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this item from being purchases:</h2>
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this item from being purchased:</h2>
 
       <ul>
         <% user.errors.full_messages.each do |message| %>
@@ -13,7 +13,7 @@
 
   <% if item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being purchases:</h2>
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being purchased:</h2>
 
       <ul>
         <% item.errors.full_messages.each do |message| %>
@@ -43,7 +43,7 @@
     <%= form.text_field :colour %>
   </div>
 
-  <%= form.hidden_field :user_id, value: params[:user_id] %>
+  <%= form.hidden_field :user_id, value: user.id %>
 
   <div class="actions">
     <%= form.submit %>
