@@ -10,7 +10,7 @@
   </p>
   <p>
     Play a Game |
-    <%= link_to "Purchase Items", purchaseitems_path %>
+    <%= link_to "Purchase Items", purchaseitems_path(current_user) %>
   </p>
 
   <h2><%= link_to 'Bag Contents', user_items_path(current_user) %></h2>
