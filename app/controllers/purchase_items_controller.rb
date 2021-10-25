@@ -29,7 +29,8 @@ class PurchaseItemsController < ApplicationController
     if @item.item == "coin" || @item.item == :coin
       if @item.sides || @item.sides != 0
         alert_text += "Ignored number of sides '#{@item.sides}' when purchasing the coin. "
-      elsif @item.colour || @item.colour != nil || @item.colour != ""
+      end
+      if @item.colour || @item.colour != nil || @item.colour != ""
         alert_text += "Ignored colour '#{@item.colour}' when purchasing the coin. "
       end
       @item = current_user.items.create(purchase_coin_params)
