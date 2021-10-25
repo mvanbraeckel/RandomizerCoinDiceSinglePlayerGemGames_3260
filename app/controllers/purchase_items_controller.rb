@@ -26,7 +26,7 @@ class PurchaseItemsController < ApplicationController
     if current_user.gems < item_cost
       # todo mvb -not displaying alert properly
       # todo mvb -item cost nil when sides no value
-      flash.alert] = "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
+      flash.alert = "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
       render :new
     else
       current_user.gems -= item_cost
