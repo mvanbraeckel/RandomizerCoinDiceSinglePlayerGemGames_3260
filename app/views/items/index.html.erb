@@ -26,7 +26,7 @@
         <%# <td><%= link_to 'Show', user_item_path(item), controller: "items" % ></td> %>
         <td><a href="/users/<%= item.user_id %>/items/<%= item.id %>/edit">Edit</a></td>
         <%# <td><%= link_to 'Edit', edit_user_item_path(item) % ></td> %>
-        <td><%= link_to 'Destroy', user_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', user_item_path(item, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%# <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } % ></td> %>
       </tr>
     <% end %>
