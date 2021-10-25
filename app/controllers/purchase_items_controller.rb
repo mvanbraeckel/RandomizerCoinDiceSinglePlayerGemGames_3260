@@ -31,15 +31,15 @@ class PurchaseItemsController < ApplicationController
       render :new
     else
       current_user.gems -= item_cost
-    end
 
-    respond_to do |format|
-      if current_user.save && @item.save
-        format.html { redirect_to purchase_item_path(@item), notice: 'Item was successfully purchased.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if current_user.save && @item.save
+          format.html { redirect_to purchase_item_path(@item), notice: 'Item was successfully purchased.' }
+          format.json { render :show, status: :created, location: @item }
+        else
+          format.html { render :new }
+          format.json { render json: @item.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
