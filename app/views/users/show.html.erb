@@ -24,15 +24,7 @@
 
 <h2><%= link_to 'Bag Contents', user_items_path(@user) %></h2>
 <ul>
-  <% @user.items.each do |item| %>
-    <% if item.item == :coin || item.item == "coin" %>
-      <li>{item: <%= item.item %>, denomination: <%= number_with_precision(item.denomination, precision: 2) %>}</li>
-    <% elsif item.item == :die || item.item == "die" %>
-      <li>{item: <%= item.item %>, sides: <%= item.sides %>, colour: <%= item.colour %>}</li>
-    <% else %>
-      <li>{item: <%= item.item %> (unknown)}</li>
-    <% end %>
-  <% end %>
+  <%= render @user.items %>
 </ul>
 
 <p>
