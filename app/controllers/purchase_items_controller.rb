@@ -18,12 +18,7 @@ class PurchaseItemsController < ApplicationController
 
     item_cost = 2
     if @item.item == "die" || @item.item == :die
-      if @item.sides < 1
-        flash.now[:alert] = "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
-        render :new
-      else
-        item_cost = @item.sides
-      end
+      item_cost = @item.sides
     end
 
     @item = current_user.items.create(purchase_item_params)
