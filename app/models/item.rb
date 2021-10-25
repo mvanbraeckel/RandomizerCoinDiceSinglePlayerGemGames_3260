@@ -18,10 +18,10 @@ class Item < ApplicationRecord
   # end
 
   def is_coin
-    item == :coin
+    item == "coin"
   end
 
   def is_die
-    item == :die
+    item == "die"
   end
 end
