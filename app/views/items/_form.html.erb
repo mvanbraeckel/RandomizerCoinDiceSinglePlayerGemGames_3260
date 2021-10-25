@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <% if user.items.errors.any? %>
+  <% if item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.items.errors.count, "error") %> prohibited this user's item from being saved:</h2>
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this user's item from being saved:</h2>
 
       <ul>
-        <% user.items.errors.full_messages.each do |message| %>
+        <% item.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
