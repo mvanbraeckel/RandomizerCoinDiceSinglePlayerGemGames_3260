@@ -22,12 +22,9 @@
         <td><%= item.denomination %></td>
         <td><%= item.sides %></td>
         <td><%= item.colour %></td>
-        <td><a href="/users/<%= item.user_id %>/items/<%= item.id %>">Show</a></td>
-        <%# <td><%= link_to 'Show', user_item_path(item), controller: "items" % ></td> %>
-        <td><a href="/users/<%= item.user_id %>/items/<%= item.id %>/edit">Edit</a></td>
-        <%# <td><%= link_to 'Edit', edit_user_item_path(item) % ></td> %>
-        <td><%= link_to 'Destroy', user_item_path(item, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%# <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } % ></td> %>
+        <td><%= link_to 'Show', user_item_path(@user, item), controller: "items" %></td>
+        <td><%= link_to 'Edit', edit_user_item_path(@user, item) %></td>
+        <td><%= link_to 'Destroy', user_item_path(@user, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +33,4 @@
 <br>
 
 <%= link_to 'Back', root_path %> |
-<%= link_to 'New Item', new_user_item_path, user_id: @user %>
+<%= link_to 'New Item', new_user_item_path(@user) %>
