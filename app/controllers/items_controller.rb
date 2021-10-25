@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = @user.items.create(item_params)
-    # redirect_to user_item_path(@user, @item)
 
     respond_to do |format|
       if @item
