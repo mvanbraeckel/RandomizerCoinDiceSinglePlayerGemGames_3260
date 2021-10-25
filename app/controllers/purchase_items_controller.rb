@@ -29,7 +29,7 @@ class PurchaseItemsController < ApplicationController
     if @item.item == "coin" || @item.item == :coin
       if @item.sides || @item.sides != 0
         alert_text += "Ignored number of sides '#{@item.sides}' when purchasing the coin. "
-      elsif @item.colour
+      elsif @item.colour || @item.colour != nil || @item.colour != ""
         alert_text += "Ignored colour '#{@item.colour}' when purchasing the coin. "
       end
       @item = current_user.items.create(purchase_coin_params)
@@ -59,7 +59,7 @@ class PurchaseItemsController < ApplicationController
           format.html { redirect_to new_purchase_item_path, notice: 'Item was successfully purchased.', alert: alert_text }
           format.json { render :show, status: :created, location: @item }
         else
-          format.html { render :new }
+          format.html { render :new, alert: alert_text }
           format.json { render json: @item.errors, status: :unprocessable_entity }
         end
       end
