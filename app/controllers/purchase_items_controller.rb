@@ -25,9 +25,18 @@ class PurchaseItemsController < ApplicationController
     #   @item = current_user.items.create(item: params[:item], sides: params[:sides], colour: params[:colour])
     # end
 
+    flash.now[:alert] = ""
     if @item.item == "coin" || @item.item == :coin
+      if @item.sides || @item.sides != 0
+        flash.now[:alert] += "Purchase alert: ignored number of sides '#{@item.sides}' when purchasing the coin.\n"
+      elsif @item.colour
+        flash.now[:alert] += "Purchase alert: ignored colour '#{@item.colour}' when purchasing the coin.\n"
+      end
       @item = current_user.items.create(purchase_coin_params)
     elsif @item.item == "die" || @item.item == :die
+      if @item.denomination
+        flash.now[:alert] += "Purchase alert: ignored denomination '#{number_with_precision(@item.denomination, precision: 2)}' when purchasing the die.\n"
+      end
       item_cost = @item.sides
       @item = current_user.items.create(purchase_die_params)
     end
@@ -35,10 +44,10 @@ class PurchaseItemsController < ApplicationController
     # @item = current_user.items.create(purchase_item_params)
 
     if !item_cost
-      flash.now[:alert] = "Purchase refused. Please input a number of sides for the die you want to purchase."
+      flash.now[:alert] += "Purchase refused. Please input a number of sides for the die you want to purchase.\n"
       render :new
     elsif current_user.gems < item_cost
-      flash.now[:alert] = "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
+      flash.now[:alert] += "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems.\n"
       render :new
     else
       current_user.gems -= item_cost
