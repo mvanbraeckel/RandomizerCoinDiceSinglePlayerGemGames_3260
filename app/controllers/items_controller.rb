@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     respond_to do |format|
-      if @item.save
+      if @user.items.create(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
@@ -56,6 +56,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    # @item = @user.items.find(params[:id])
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
@@ -70,6 +71,7 @@ class ItemsController < ApplicationController
     end
     def set_item
       @item = Item.find(params[:id])
+      # @item = @user.items.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
