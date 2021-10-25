@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   with_options if: :is_die? do |die|
     die.validates :denomination, presence: false, allow_blank: true
     die.validates :sides, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
-    die.validates :colour, presence: true, inclusion: { in: %w(red, green, blue, yellow, black, white), message: "value '%{value}' is not a valid die colour" }
+    die.validates :colour, presence: true, inclusion: { in: %w(red green blue yellow black white), message: "value '%{value}' is not a valid die colour" }
   end
 
   def is_coin?

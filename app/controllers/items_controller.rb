@@ -13,6 +13,11 @@ class ItemsController < ApplicationController
   def show
   end
 
+  # for the purchase items page
+  def purchaseitems
+    @item = Item.new
+  end
+
   # GET /items/new
   def new
     @item = Item.new

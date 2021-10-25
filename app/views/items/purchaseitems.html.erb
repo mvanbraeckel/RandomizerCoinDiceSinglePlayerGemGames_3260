@@ -1,0 +1,27 @@
+<h1>Purchase Item</h1>
+
+<p>Spend your gems to get more items!</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Points</th>
+      <th>Gems</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= current_user.email %></td>
+      <td><%= current_user.points %></td>
+      <td><%= current_user.gems %></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= render 'purchaseitems_form', user: current_user, item: @item %>
+
+<%= link_to 'Exit Back to Home', root_path %>
