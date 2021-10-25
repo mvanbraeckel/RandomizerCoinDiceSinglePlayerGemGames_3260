@@ -22,15 +22,28 @@ class PurchaseItemsController < ApplicationController
     #   end
     # end
 
-    @item = current_user.items.create(purchase_item_params)
+    @item = Item.new(purchase_item_params)
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to purchase_item_path(@item), notice: 'Item was successfully purchased.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new, notice: 'Params #{params}' }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+    item_cost = 2
+    if @item.item == "die" || @item.item == :die
+      item_cost = @item.sides
+    end
+
+    if current_user.gems < item_cost
+      flash.now[:alert] = "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
+      render :new
+    else # current_user.gems >= item_cost
+      current_user.gems -= item_cost
+      @item = current_user.items.create(purchase_item_params)
+
+      respond_to do |format|
+        if current_user.save && @item.save
+          format.html { redirect_to purchase_item_path(@item), notice: 'Item was successfully purchased.' }
+          format.json { render :show, status: :created, location: @item }
+        else
+          format.html { render :new, notice: 'Params #{params}' }
+          format.json { render json: @item.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
