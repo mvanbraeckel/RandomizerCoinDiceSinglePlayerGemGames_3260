@@ -12,8 +12,8 @@ class Item < ApplicationRecord
 
   with_options if: :is_die? do |die|
     die.validates :denomination, presence: false, allow_blank: true
-    die.validates :sides, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
-    die.validates :colour, presence: true, inclusion: { in: %w(red green blue yellow black white), message: "value '%{value}' is not a valid die colour - must be 'red', 'green', 'blue', 'yellow', 'black', or 'white'" }
+    die.validates :sides, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+    die.validates :colour, inclusion: { in: %w(red green blue yellow black white), message: "value '%{value}' is not a valid die colour - must be 'red', 'green', 'blue', 'yellow', 'black', or 'white'" }
   end
 
   def is_coin?
