@@ -44,17 +44,19 @@ class PurchaseItemsController < ApplicationController
     # @item = current_user.items.create(purchase_item_params)
 
     if !item_cost
-      flash.now[:alert] = "#{alert_text}Purchase refused. Please input a number of sides for the die you want to purchase."
+      alert_text += "Purchase refused. Please input a number of sides for the die you want to purchase."
+      flash.now[:alert] = "#{alert_text}"
       render :new
     elsif current_user.gems < item_cost
-      flash.now[:alert] = "#{alert_text}Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
+      alert_text += "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
+      flash.now[:alert] = "#{alert_text}"
       render :new
     else
       current_user.gems -= item_cost
 
       respond_to do |format|
         if current_user.save && @item.save
-          format.html { redirect_to new_purchase_item_path, notice: 'Item was successfully purchased.' }
+          format.html { redirect_to new_purchase_item_path, notice: 'Item was successfully purchased.', alert: alert_text }
           format.json { render :show, status: :created, location: @item }
         else
           format.html { render :new }
