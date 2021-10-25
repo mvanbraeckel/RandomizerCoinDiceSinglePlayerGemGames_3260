@@ -7,12 +7,13 @@ class PurchaseItemsController < ApplicationController
   # POST /purchase_items
   # POST /purchase_items.json
   def create
-    # respond_to do |format|
-    #   if current_user.gems < 100
-    #     format.html { render :new, notice: 'Params #{params}' }
-    #     format.json { render json: @item.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    @item = Item.new
+    respond_to do |format|
+      if current_user.gems < 100
+        format.html { render :new, notice: 'Params #{params}' }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
 
     @item = current_user.items.create(purchase_item_params)
 
