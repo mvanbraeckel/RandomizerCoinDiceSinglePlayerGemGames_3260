@@ -1,4 +1,4 @@
-<%= form_with(model: [ user, user.items.build ], local: true) do |form| %>
+<%= form_with(model: [ user, user.items.build ], url: purchase_items_path, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this item from being purchased:</h2>
