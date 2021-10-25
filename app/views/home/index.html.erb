@@ -18,16 +18,6 @@
     <%= render current_user.items %>
   </ul>
 
-  <p><strong>Hardcoded Bag Contents:</strong></p>
-  <ul>
-    <li>{item: coin, denomination: 0.25}</li>
-    <li>{item: coin, denomination: 0.25}</li>
-    <li>{item: coin, denomination: 0.25}</li>
-    <li>{item: die, sides: 6, colour: :white}</li>
-    <li>{item: die, sides: 6, colour: :white}</li>
-    <li>{item: die, sides: 6, colour: :white}</li>
-  </ul>
-
 <% else %>
   <%= link_to "Log In", login_path %> or
   <%= link_to "Sign Up", signup_path %>
