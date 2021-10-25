@@ -4,11 +4,12 @@ class Item < ApplicationRecord
   validates :item, inclusion: { in: %w(coin die),
     message: "type '%{value}' is not a valid item - must be 'coin' or 'die'" }
 
-  coin.validates :denomination, presence: true, numericality: { greater_than: 0.0 },
-    inclusion: { in: %w(.05 0.05 .1 0.1 .10 0.10 .25 0.25 1 1.0 1.00 2 2.0 2.00), message: "%{value} is not a valid coin denomination" },
-    if: :is_coin?
-  coin.validates :sides, presence: false, allow_blank: true, if: :is_coin?
-  coin.validates :colour, presence: false, allow_blank: true, if: :is_coin?
+  with_options if: :is_coin? do |coin|
+    coin.validates :denomination, presence: true, numericality: { greater_than: 0.0 },
+      inclusion: { in: %w(.05 0.05 .1 0.1 .10 0.10 .25 0.25 1 1.0 1.00 2 2.0 2.00), message: "%{value} is not a valid coin denomination" }
+    coin.validates :sides, presence: false, allow_blank: true
+    coin.validates :colour, presence: false, allow_blank: true
+  end
 
   # with_options if: :item == :die do |die|
   #   die.validates :denomination, presence: false, allow_blank: true
