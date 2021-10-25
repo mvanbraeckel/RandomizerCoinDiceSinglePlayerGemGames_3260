@@ -27,8 +27,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        # Create 3 quarters in a row, then 3 white d6 consecutively on sign up
         for i in 0..2
           @user.items.create(item: :coin, denomination: 0.25)
+        end
+        for i in 0..2
           @user.items.create(item: :die, sides: 6, colour: :white)
         end
 
