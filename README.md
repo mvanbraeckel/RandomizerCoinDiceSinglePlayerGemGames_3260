@@ -25,7 +25,9 @@ Things you may want to cover:
 
 ## my stuff
 
+- General source: https://guides.rubyonrails.org/getting_started.html
 - Source for sign-in and user pages and functionality: https://carsonrcole.com/blog/posts/rolling-your-own-authentication-in-rails-5
+  - additional source: https://medium.com/@ashleymcolletti/add-authentication-to-your-rails-app-with-bcrypt-a53917252159
 - "Hello World" is working, go to `/articles` or `/articles#index` to see "Hello, Rails!"
 - Sign-in page
   - For sign in functionality, go to `/login`
