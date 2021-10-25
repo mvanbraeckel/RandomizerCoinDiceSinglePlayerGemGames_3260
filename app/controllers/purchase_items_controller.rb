@@ -14,14 +14,6 @@ class PurchaseItemsController < ApplicationController
   # POST /purchase_items
   # POST /purchase_items.json
   def create
-    # @item = Item.new
-    # respond_to do |format|
-    #   if current_user.gems < 100
-    #     format.html { render :new, notice: 'Params #{params}' }
-    #     format.json { render json: @item.errors, status: :unprocessable_entity }
-    #   end
-    # end
-
     @item = Item.new(purchase_item_params)
 
     item_cost = 2
@@ -41,7 +33,7 @@ class PurchaseItemsController < ApplicationController
           format.html { redirect_to purchase_item_path(@item), notice: 'Item was successfully purchased.' }
           format.json { render :show, status: :created, location: @item }
         else
-          format.html { render :new, notice: 'Params #{params}' }
+          format.html { render :new }
           format.json { render json: @item.errors, status: :unprocessable_entity }
         end
       end
