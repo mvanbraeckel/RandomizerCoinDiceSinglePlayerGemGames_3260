@@ -30,8 +30,8 @@
 
 <%# Get all the user's items, roll them all and append to an array the result, while also accumulating total sum (where heads = 1, tails = 0) %>
 <% @items = current_user.items%>
-<% @player_results = []%>
-<% @player_sum = 0%>
+<% @player_results = [] %>
+<% @player_sum = 0 %>
 <% for item in @items %>
   <% if item.item == "coin" || item.item == :coin %>
     <% coin_result = (rand(2) == 0 ? :T : :H) %>
@@ -48,19 +48,19 @@
 
 <%# Do the same thing again, but for the computer %>
 <% @items = current_user.items%>
-<% @cpu_sum = []%>
-<% @cpu_total = 0%>
+<% @cpu_results = [] %>
+<% @cpu_sum = 0 %>
 <% for item in @items %>
   <% if item.item == "coin" || item.item == :coin %>
     <% coin_result = (rand(2) == 0 ? :T : :H) %>
-    <% @cpu_sum << coin_result %>
-    <% @cpu_total += (coin_result == :H ? 1 : 0) %>
+    <% @cpu_results << coin_result %>
+    <% @cpu_sum += (coin_result == :H ? 1 : 0) %>
   <% elsif item.item == "die" || item.item == :die %>
     <% die_result = 1 + rand(item.sides) %>
-    <% @cpu_sum << die_result %>
-    <% @cpu_total += die_result %>
+    <% @cpu_results << die_result %>
+    <% @cpu_sum += die_result %>
   <% else %>
-    <% @cpu_sum << 0 %>
+    <% @cpu_results << 0 %>
   <% end %>
 <% end %>
 
