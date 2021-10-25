@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
     @item = @user.items.create(item_params)
 
     respond_to do |format|
-      if @item
+      if @item.save
         format.html { redirect_to user_item_path(@user, @item), notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
