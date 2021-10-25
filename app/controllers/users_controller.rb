@@ -79,10 +79,10 @@ class UsersController < ApplicationController
     # Use this to create 3 quartes and 3 white d6 for after signup
     def init_starting_items
       if @user.save
-        for i in 0..2
-          @user.items.create(item: :coin, denomination: 0.25)
-          @user.items.create(item: :die, sides: 6, colour: :white)
-        end
+        # for i in 0..2
+        #   @user.items.create(item: :coin, denomination: 0.25)
+        #   @user.items.create(item: :die, sides: 6, colour: :white)
+        # end
       end
     end
 end
