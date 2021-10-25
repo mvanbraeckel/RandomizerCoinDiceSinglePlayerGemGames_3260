@@ -8,7 +8,7 @@ class PurchaseItemsController < ApplicationController
   # POST /purchase_items.json
   def create
     respond_to do |format|
-      if current_user.gems < params[:sides]
+      if current_user.gems < 100
         format.html { render :new, notice: 'Params #{params}' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
