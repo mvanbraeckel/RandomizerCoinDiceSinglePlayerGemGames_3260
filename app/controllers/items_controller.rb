@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  skip_before_action :set_user, only: [:purchase_items]
+  skip_before_action :set_item, only: [:purchase_items]
   before_action :set_user
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -14,7 +16,7 @@ class ItemsController < ApplicationController
   end
 
   # for the purchase items page
-  def purchaseitems
+  def purchase_items
     @item = Item.new
   end
 

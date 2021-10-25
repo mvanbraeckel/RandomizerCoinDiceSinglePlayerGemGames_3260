@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  get "purchaseitems", to: "items#purchaseitems", as: "purchaseitems"
+  get "purchase_items", to: "items#purchase_items", as: "purchase_items"
 
   get "signup", to: "users#new", as: "signup"
   get "login", to: "sessions#new", as: "login"
