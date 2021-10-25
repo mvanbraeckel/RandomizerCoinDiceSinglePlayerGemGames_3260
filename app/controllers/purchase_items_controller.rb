@@ -18,24 +18,29 @@ class PurchaseItemsController < ApplicationController
 
     item_cost = 2
     if @item.item == "die" || @item.item == :die
-      item_cost = @item.sides
+      if @item.sides < 1
+        flash.now[:alert] = "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
+        render :new
+      else
+        item_cost = @item.sides
+      end
     end
 
-    if current_user.gems < item_cost
-      flash.now[:alert] = "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
-      render :new
-    else # current_user.gems >= item_cost
-      current_user.gems -= item_cost
-      @item = current_user.items.create(purchase_item_params)
+    @item = current_user.items.create(purchase_item_params)
 
-      respond_to do |format|
-        if current_user.save && @item.save
+    respond_to do |format|
+      if current_user.save && @item.save
+        if current_user.gems < item_cost
+          flash.now[:alert] = "Purchase refused. You don't have enough gems. The item costs #{item_cost}, but you only have #{current_user.gems} gems."
+          render :new
+        else
+          current_user.gems -= item_cost
           format.html { redirect_to purchase_item_path(@item), notice: 'Item was successfully purchased.' }
           format.json { render :show, status: :created, location: @item }
-        else
-          format.html { render :new }
-          format.json { render json: @item.errors, status: :unprocessable_entity }
         end
+      else
+        format.html { render :new }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
