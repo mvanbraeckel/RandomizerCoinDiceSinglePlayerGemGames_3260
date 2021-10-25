@@ -13,7 +13,7 @@
     Purchase Items
   </p>
 
-  <h2><%= link_to 'Bag Contents', user_items_path(current_user.id) %></h2>
+  <h2><%= link_to 'Bag Contents', user_items_path(current_user) %></h2>
   <ul>
     <% render current_user.items %>
   </ul>
