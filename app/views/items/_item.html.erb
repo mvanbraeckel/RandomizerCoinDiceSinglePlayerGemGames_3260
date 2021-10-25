@@ -1,5 +1,5 @@
 <% if item.item == :coin || item.item == "coin" %>
-  <li>{item: <%= item.item %>, denomination: <% item.denomination.round(2) %>}</li>
+  <li>{item: <%= item.item %>, denomination: <% number_to_currency(item.denomination) %>}</li>
 <% elsif item.item == :die || item.item == "die" %>
   <li>{item: <%= item.item %>, sides: <% item.sides %>, colour: <% item.colour %>}</li>
 <% else %>

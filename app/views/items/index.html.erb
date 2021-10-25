@@ -19,7 +19,7 @@
       <tr>
         <td><%= User.find(item.user_id).email %></td>
         <td><%= item.item %></td>
-        <td><%= item.denomination.round(2) %></td>
+        <td><%= number_to_currency(item.denomination) %></td>
         <td><%= item.sides %></td>
         <td><%= item.colour %></td>
         <td><%= link_to 'Show', user_item_path(@user, item) %></td>

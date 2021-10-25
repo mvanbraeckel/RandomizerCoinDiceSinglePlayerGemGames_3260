@@ -12,7 +12,7 @@
 
 <p>
   <strong>Denomination:</strong>
-  <%= @item.denomination.round(2) %>
+  <%= number_to_currency(@item.denomination) %>
 </p>
 
 <p>
