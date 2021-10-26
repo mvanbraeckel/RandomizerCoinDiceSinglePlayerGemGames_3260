@@ -36,43 +36,6 @@ class GamesController < ApplicationController
     @cpu_results = @cpu.results
     @cpu_sum = @cpu.sum[0]
 
-    # -----
-    # # Get all the user's items, roll them all and append to an array the result, while also accumulating total sum (where heads = 1, tails = 0)
-    # items = current_user.items
-    # @player_results = []
-    # @player_sum = 0
-    # for item in items
-    #   if item.item == "coin" || item.item == :coin
-    #     coin_result = (rand(2) == 0 ? :T : :H)
-    #     @player_results << coin_result
-    #     @player_sum += (coin_result == :H ? 1 : 0)
-    #   elsif item.item == "die" || item.item == :die
-    #     die_result = 1 + rand(item.sides)
-    #     @player_results << die_result
-    #     @player_sum += die_result
-    #   else
-    #     @player_results << 0
-    #   end
-    # end
-
-    # # Do the same thing again, but for the computer
-    # items = current_user.items
-    # @cpu_results = []
-    # @cpu_sum = 0
-    # for item in items
-    #   if item.item == "coin" || item.item == :coin
-    #     coin_result = (rand(2) == 0 ? :T : :H)
-    #     @cpu_results << coin_result
-    #     @cpu_sum += (coin_result == :H ? 1 : 0)
-    #   elsif item.item == "die" || item.item == :die
-    #     die_result = 1 + rand(item.sides)
-    #     @cpu_results << die_result
-    #     @cpu_sum += die_result
-    #   else
-    #     @cpu_results << 0
-    #   end
-    # end
-
     # Determine who won, including messages to display, etc.
     # Properly calculate and display and increase earned points and gems based on the math, then save the user.
 
