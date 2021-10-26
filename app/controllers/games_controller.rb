@@ -10,7 +10,7 @@ class GamesController < ApplicationController
       if item.item == "coin" || item.item == :coin
         @player.store(Coin.new(item.denomination))
       elsif item.item == "die" || item.item == :die
-        @player.store(Die.new(item.sides, item.colour))
+        @player.store(Die.new(item.sides, item.colour.parameterize.underscore.to_sym))
       end
     end
 
