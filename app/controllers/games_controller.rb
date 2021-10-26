@@ -14,24 +14,23 @@ class GamesController < ApplicationController
       end
     end
 
-    # Searches player bag based on goal description, loading their cup with matching items, then throws it
-    # NOTE: for simple game, this is default empty {} for all items in bag
-    # Then, get the player throw results and calculate sum/tally
-    # NOTE: for simple game, this is always sum
-    @player.load
-    @player.throw
-    @player_results = @player.results
-    @player_sum = @player.sum[0]
-
     # Computer gets a duplicate bag contents mirroring the player's
     cpu_bag = @player.bag # Clone of player bag with same item contents
     @cpu = Player.new("cpu-#{current_user.username}")
     @cpu.move_all(cpu_bag)
 
+    # NOTE: for simple game, goal description is default empty {} for all items in bag
+    # NOTE: for simple game, always sum goal
+
+    # Searches player bag based on goal description, loading their cup with matching items, then throws it
+    # Then, get the player throw results and calculate sum/tally
+    @player.load
+    @player.throw
+    @player_results = @player.results
+    @player_sum = @player.sum[0]
+
     # Computer also searches its bag based on goal description, loading its cup with matching items, then throws it
-    # NOTE: for simple game, this is default empty {} for all items in bag
     # Then, get the computer throw results and calculate sum/tally
-    # NOTE: for simple game, this is always sum
     @cpu.load
     @cpu.throw
     @cpu_results = @cpu.results
