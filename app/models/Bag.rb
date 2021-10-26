@@ -69,6 +69,8 @@ class Bag < RandomizerContainer
 
     # Returns a Bag clone with copies of all its randomizers
     def clone
-        Bag.new.copy_all(self)
+        bag_clone = Bag.new
+        bag_clone.copy_all(self)
+        bag_clone
     end
 end
