@@ -1,0 +1,90 @@
+----------------------------------------------------------------------------------------------
+Course: CIS*3260: Software Design IV | A1: Ruby
+Name: Mitchell Van Braeckel
+Student Number: 1002297
+Email: mvanbrae@uoguelph.ca
+Due Date: September 27, 2021
+Professor: Mark Wineberg
+Language: Ruby
+----------------------------------------------------------------------------------------------
+
+==============================================================================================
+USE CASE #1 : D&D "Backstabber" Attack
+==============================================================================================
+Primary Actor: Dirk Deacon, D&D Player
+Goal: Makes a melee attack from behind a creature while hidden
+Initiating Event:
+- Dirk is playing D&D
+- Dirk has exactly 1 coin, 3d20, and 1d8 in his bag
+- Dirk's cup, which he uses for coin flips and die rolls, is empty
+- Dirk's character is hiding successful without being noticed
+- Dirk's character melee attacks the target from behind
+- Dirk's character's melee attack does 1d8 damage
+Main Success Scenario:
+- Dirk's character possesses at least one use left of its homebrew Backstabber Feat
+- Dirk chooses to activate his homebrew Backstabber Feat for the melee attack from behind while hidden
+- Dirk removes his 1 coin from his bag and adds it to his cup in preparation to use as part of the Backstabber feat attack roll
+- Dirk removes 3d20 from his bag and adds it to his cup in preparation to use as part of the Backstabber feat attack roll
+- Dirk throws the contents of his cup to make the attack roll, making note of the throw's results
+- Dirk then puts the 1 coin and 3d20 back into his bag
+- Dirk removes 1d8 from his bag and adds it to his cup in preparation to use as part of the damage roll
+- Dirk throws the contents of his cup to make the damage roll, making note of the throw's results
+- Dirk then puts the 1d8 back into his bag
+Post Conditions:
+- Dirk has a total of 2 separate cup throw-rolls
+- Dirk has flipped 1 coin
+- Dirk has rolled 3d20 dice
+- Dirk has rolled 1d8 dice
+- Dirk's cup is empty
+- Dirk's bag once again contains the 1 coin, 3d20, and 1d8
+Alternate Flows or Exceptions / Scenario Notes:
+- If the coin flip is heads, the attack hits regardless of the "special advantage" 3d20 attack roll
+- If the coin flip is tails and the "special advantage" 3d20 attack roll still misses, the 1d8 damage roll is halved (rounded down)
+- If any of the 3d20s are a natural 20, the 1d8 damage roll is doubled
+
+==============================================================================================
+USE CASE #2 : Bag of 5 lost coins leads to buying a cheap lottery ticket
+==============================================================================================
+Primary Actor: Bill Bigsby
+Goal: To buy a lottery ticket if he ever finds $3 or more on the ground
+Initiating Event:
+- Bill is alive
+- Bill notices money a random bag of money with 5 coins in it
+- Bill's bag is empty
+- Bill likes spending money buying lottery tickets
+Main Success Scenario:
+- Bill is able to confirm it's "finder's keeper's"
+- Bill can reach the bag and take its contents for himself, adding it to his own bag of money he carries
+- Bill pours its contents into his own bag as fast as he can so nobody else can take it
+- Bill then throws everything out
+- Bill counts the total sum of money
+Post Conditions:
+- Bill's bag contains the money he found and took as he walks to go buy a lottery ticket
+- Lost bag is empty
+- Bill has at least 25 cents since he found 5 CAD coins
+Alternate Flows or Exceptions / Scenario Notes:
+- If the total is greater than or equal to $3.00, he spends it on a cheap lottery ticket
+- If the total is less than $3.00, he saves puts it back in his bag to save it
+
+==============================================================================================
+USE CASE #3 : Dice Battle - 2 Players Compete for Highest Total Result
+==============================================================================================
+Primary Actors: Naruto, Sasuke
+Goal: To roll a higher total result than your opponent
+Initiating Event:
+- Naruto and Sasuke both have a bag and with 1d100, 1d20, 1d6, and 1 coin
+- Naruto and Sasuke ready their tossing cups with all their dice and 1 coin
+Main Success Scenario:
+- Naruto and Sasuke both throw their cup's contents
+- Both of them count the total result of their throw
+- They compare results to see who has the highest resulting total
+Post Conditions:
+- Naruto has thrown all his dice and coins at the same time
+- Sasuke has thrown all his dice and coins at the same time
+- Naruto counts up the total result of his dice battle throw
+- Sasuke counts up the total result of his dice battle throw
+- Naruto's and Sasuke's total results are compared to see who had the higher result and won
+Alternate Flows or Exceptions / Scenario Notes:
+- If Sasuke wins, Naruto has to let Sasuke give him the "One Thousand Years of Death" special move
+- If Naruto wins, Sasuke has to take Naruto out to lunch and buy him 3 bowls of his favourite "Ichiraku Ramen"
+- If there's a tie, they stay silent awkwardly for a few minutes as they figure out what to do about this situation

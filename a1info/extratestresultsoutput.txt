@@ -1,0 +1,86 @@
+-----------------------------------------------
+Course: CIS*3260: Software Design IV | A1: Ruby
+Name: Mitchell Van Braeckel
+Student Number: 1002297
+Email: mvanbrae@uoguelph.ca
+Due Date: September 27, 2021
+Professor: Mark Wineberg
+Language: Ruby
+-----------------------------------------------
+
+-- 1. D&D Backstabber Attack --
+
+1. Player's number of throws is 2
+Expected:       2
+Actual:         [1, 4];length=2
+--PASS--
+2. Player's first throw was the attack roll
+Expected:       1 coin and 3d20 results
+Actual:         [:T, 5, 7, 8]
+--PASS--
+3. Player's second (most recent) throw was the damage roll
+Expected:       1d8 results
+Actual:         [5]
+--PASS--
+4. Player notes the sum of both rolls, excluding the coin
+Expected:       Sum of 3d20s of attack roll
+Actual:         [5, 20]
+--PASS--
+5. Player checks if the result of the coin flip is heads
+Expected:       Coin flip is heads if second value is 1
+Actual:         [0, 0]
+--PASS--
+6. Player checks for any natural 20s
+Expected:       Sum of 3d20s of attack roll is at least 20 if there was at least 1 nat20
+Actual:         [0, 0]
+--PASS--
+7. Now, the player erases turn throw history now that his turn is over
+Expected:       empty array of results
+Actual:         []
+--PASS--
+
+-- 2. Bag of 5 Lost Coins Leads to Lottery Ticket --
+
+1. Player's name is Bill Bigsby
+Expected:       Bill Bigsby
+Actual:         Bill Bigsby
+--PASS--
+2. Lost bag is empty after contents is taken
+Expected:       Lost bag has no items
+Actual:         []
+--PASS--
+3. Bill's bag contains 5 coins
+Expected:       5
+Actual:         Item Count=[5]; Num Coins=[5]
+--PASS--
+4. Bill dumps the money out of his bag to count it
+Expected:       5 coins are thrown out
+Actual:         [:H, :H, :T, :H, :H]
+--PASS--
+5. Bill counts the money with his hand one-by-one to see if he has enough to buy a lottery ticket
+Expected:       Sum of all coins is at least 0.25
+Actual:         3.45
+--PASS--
+
+-- 3. Dice Battle to See Who Has Better Luck --
+
+1. Naruto checks his 4 results
+Expected:       1d100, 1d20, 1d6, and 1 coin results
+Actual:         [:T, 3, 16, 99]
+--PASS--
+2. Sasuke checks his 4 results
+Expected:       1d100, 1d20, 1d6, and 1 coin results
+Actual:         [:T, 5, 4, 76]
+--PASS--
+3. Naruto totals his results
+Expected:       Total sum of his results
+Actual:         [118]
+--PASS--
+4. Sasuke totals his results
+Expected:       Total sum of his results
+Actual:         [85]
+--PASS--
+5. Naruto and Sasuke compare total results to see who won
+Expected:       The higher total result of the two wins - Naruto=118 vs Sasuke=85
+Actual:         Naruto wins! His 118 beat Sasuke's 85
+--PASS--
