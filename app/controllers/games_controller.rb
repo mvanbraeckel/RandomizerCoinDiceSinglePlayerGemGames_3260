@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   def playgame
     # Get all the user's items, make objects for each adding them to the player's bag (ignores bad items)
     @player = Player.new(current_user.username)
+    items = current_user.items
     for item in items
       if item.item == "coin" || item.item == :coin
         @player.store(Coin.new(item.denomination))
