@@ -103,10 +103,11 @@ class GamesController < ApplicationController
         next
       end
     end
-    while cpu_random_items_list.length > 0 do
-      item = cpu_random_items_list.shift
-      @cpu.store(item)
-    end
+    @cpu.store(Coin.new(0.05))
+    # while cpu_random_items_list.length > 0 do
+    #   item = cpu_random_items_list.shift
+    #   @cpu.store(item)
+    # end
     # cpu_random_items_list.each do |item|
     #   @cpu.store(item)
     # end
