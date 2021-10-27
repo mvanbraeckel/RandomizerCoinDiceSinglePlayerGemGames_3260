@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
+  helper_method :current_user, :current_goal_type, :current_goal_coin_descr_hash, :current_goal_die_descr_hash
   before_action :authenticate_user!
 
   def authenticate_user!
