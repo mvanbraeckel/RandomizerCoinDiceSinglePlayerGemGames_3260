@@ -7,20 +7,20 @@ class GamesController < ApplicationController
     # Computer gets a duplicate bag (clone) with contents mirroring the player's
     # but computer randomly selects a items to load for its throw (regardless of goal, like in assignment description. ie. cpu is not smart)
     @player = Player.new(current_user.username)
-    @cpu = Player.new("cpu-#{current_user.username}")
+    # @cpu = Player.new("cpu-#{current_user.username}")
 
     items = current_user.items
     for item in items
       if item.item == "coin" || item.item == :coin
         @player.store(Coin.new(item.denomination))
-        if rand(2) == 1
-          @cpu.store(Coin.new(item.denomination))
-        end
+        # if rand(2) == 1
+        #   @cpu.store(Coin.new(item.denomination))
+        # end
       elsif item.item == "die" || item.item == :die
         @player.store(Die.new(item.sides, item.colour.parameterize.underscore.to_sym))
-        if rand(2) == 1
-          @cpu.store(Die.new(item.sides, item.colour.parameterize.underscore.to_sym))
-        end
+        # if rand(2) == 1
+        #   @cpu.store(Die.new(item.sides, item.colour.parameterize.underscore.to_sym))
+        # end
       end
     end
 
@@ -102,18 +102,18 @@ class GamesController < ApplicationController
     # todo mvb -make computer randomly select coins and dice from their bag for their throw
     # # Computer gets a duplicate bag (clone) with contents mirroring the player's
     # # Computer randomly selects a items to load for its throw (regardless of goal, like in assignment description. ie. cpu is not smart)
-    # @cpu = Player.new("cpu-#{current_user.username}")
-    # cpu_bag = @player.bag
+    @cpu = Player.new("cpu-#{current_user.username}")
+    cpu_bag = @player.bag
 
-    # cpu_random_items_list = []
-    # @cpu_bag_list1 = []
-    # cpu_bag.randomizers.each do |item|
-    #   if rand(2) == 1
-    #     @cpu_bag_list1 << item.clone.item_description
-    #     cpu_random_items_list << item.clone
-    #     next
-    #   end
-    # end
+    cpu_random_items_list = []
+    @cpu_bag_list1 = []
+    cpu_bag.randomizers.each do |item|
+      if rand(2) == 1
+        @cpu_bag_list1 << item.clone.item_description
+        cpu_random_items_list << item.clone
+        next
+      end
+    end
     # @cpu.store(Coin.new(0.05))
     # while cpu_random_items_list.length > 0 do
     #   item = cpu_random_items_list.shift
@@ -122,6 +122,11 @@ class GamesController < ApplicationController
     # cpu_random_items_list.each do |item|
     #   @cpu.store(item)
     # end
+    for item in cpu_random_items_list
+      if rand(2) == 1
+        @cpu.store(item)
+      end
+    end
     # for item in cpu_bag.randomizers
     #   if rand(2) == 1
     #     @cpu.store(item.clone)
