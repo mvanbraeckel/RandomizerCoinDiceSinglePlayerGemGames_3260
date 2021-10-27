@@ -88,9 +88,6 @@ class GamesController < ApplicationController
     @player.throw
     @player_results = @player.results
 
-    @player_sum = @player.sum[0]
-    @player_tally = @player.tally[0]
-
     # Computer also searches its bag based on goal description, loading its cup with matching items, then throws it
     # Then, get the computer throw results and calculate sum/tally
     # todo mvb -make computer randomly select coins and dice from their bag for their throw
@@ -106,19 +103,18 @@ class GamesController < ApplicationController
     @cpu.throw
     @cpu_results = @cpu.results
 
-    @cpu_sum = @cpu.sum[0]
-    @cpu_tally = @cpu.tally[0]
-
     # Determine who won, including messages to display, etc.
     # Properly calculate and display and increase earned points and gems based on the math, then save the user.
+    coin_descr_hash = current_goal_coin_descr_hash ? current_goal_coin_descr_hash : {}
+    die_descr_hash = current_goal_die_descr_hash ? current_goal_die_descr_hash : {}
     if @goal_type == :tallied
       @results_descr = "Throw Tallies:"
-      @player_score = @player_tally
-      @cpu_score = @cpu_tally
+      @player_score = @player.tally(coin_descr_hash)[0] + @player.tally(die_descr_hash)[0]
+      @cpu_score = @cpu.tally(coin_descr_hash)[0] + @cpu.tally(die_descr_hash)[0]
     else # @goal_type == :summed
       @results_descr = "Throw Sums:"
-      @player_score = @player_sum
-      @cpu_score = @cpu_sum
+      @player_score = @player.sum(coin_descr_hash)[0] + @player.sum(die_descr_hash)[0]
+      @cpu_score =  @cpu.sum(coin_descr_hash)[0] + @cpu.sum(die_descr_hash)[0]
     end
 
     if @player_score > @cpu_score
