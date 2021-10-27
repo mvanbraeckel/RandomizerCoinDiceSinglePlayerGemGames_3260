@@ -153,4 +153,8 @@ Below please find general comments and statements, as well as an overview of eve
 * Make sure your Rails server is running your website either at the time of submission, or when informed through CourseLink that the TAs have begun grading, until informed that grading has completed
 * The Rails application should be called "CupThrow"
 
-NOTE: Since nothing was explicitly specified, I've submitted a zipped folder that contains my `CupThrow` application as outlined and created via the documents and instructions we were provided. However, it uses the generated `.gitignore`, where I've also told it to ignore `/vendor`.
+For convenience, I'll write here that my assigned port number is 32025. If for some reason my app stops running, please let me know and I can restart it. I'd first check via `lsof -i :32035` to see if it's still running, then I'd stop it via `kill -9 $(cat tmp/pids/server.pid)` if it was still running, and finally I'd restart it via `rails server -d -p 32035 -b 0.0.0.0`.
+
+Since nothing was explicitly specified, I've submitted a zipped folder that contains my `CupThrow` application as outlined and created via the documents and instructions we were provided. However, it uses the generated `.gitignore`, where I've also told it to ignore `/vendor`.
+
+Also note, that I completed the items purchasing bonus 0.5 page, and also did a lot of work for the 3pts bonus "full game". My rules match up perfectly, except I didn't have the option for the user to select which items they load for a throw. Instead, it creates the optimal throw based on their items and the randomly generated goal, such that it also maximizes possible earned points via maximizing the multiplication factor when determining points won.
