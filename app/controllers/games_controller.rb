@@ -94,13 +94,17 @@ class GamesController < ApplicationController
     @cpu = Player.new("cpu-#{current_user.username}")
     cpu_bag = @player.bag
 
+    cpu_random_items_list = []
     @cpu_bag_list1 = []
     cpu_bag.randomizers.each do |item|
       if rand(2) == 1
         @cpu_bag_list1 << item.clone.item_description
-        @cpu.store(item.clone)
+        cpu_random_items_list << item.clone
         next
       end
+    end
+    cpu_random_items_list.each do |item|
+      @cpu.store(item.clone)
     end
     # for item in cpu_bag.randomizers
     #   if rand(2) == 1
