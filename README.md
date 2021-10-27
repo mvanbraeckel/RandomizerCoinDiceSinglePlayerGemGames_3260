@@ -44,6 +44,9 @@ Below please find general comments and statements, as well as an overview of eve
 * Referenced source for sign-in and user pages and functionality: https://carsonrcole.com/blog/posts/rolling-your-own-authentication-in-rails-5
   * additional referenced source: https://medium.com/@ashleymcolletti/add-authentication-to-your-rails-app-with-bcrypt-a53917252159
 * "Hello World" is working, go to `/articles` or `/articles#index` to see "Hello, Rails!"
+* I integrated and implemented my own A1 code (you can find them all in the `app/models/` folder as ruby `.rb` files)
+  * A few extra things are in the `/a1info` folder, but that's like tests, PDFs, texts files, etc.
+* I've included some extra documents in my submission (like the A2 info) because it was also in my GitHub repo already
 * Sign-in page
   * For sign in functionality, go to `/login`
     * asks for username, email, and password
