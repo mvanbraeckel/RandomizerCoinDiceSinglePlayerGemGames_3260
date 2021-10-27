@@ -153,7 +153,7 @@ Below please find general comments and statements, as well as an overview of eve
 * Make sure your Rails server is running your website either at the time of submission, or when informed through CourseLink that the TAs have begun grading, until informed that grading has completed
 * The Rails application should be called "CupThrow"
 
-For convenience, I'll write here that my assigned port number is 32025. If for some reason my app stops running, please let me know and I can restart it. I'd first check via `lsof -i :32035` to see if it's still running, then I'd stop it via `kill -9 $(cat tmp/pids/server.pid)` if it was still running, and finally I'd restart it via `rails server -d -p 32035 -b 0.0.0.0`.
+For convenience, I'll write here that my assigned port number is 32025. If for some reason my app stops running from the `cis3260.socs.uoguelph.ca` server, please let me know and I can restart it. I'd first check via `lsof -i :32035` to see if it's still running, then I'd stop it via `kill -9 $(cat tmp/pids/server.pid)` if it was still running, and finally I'd restart it via `rails server -d -p 32035 -b 0.0.0.0`.
 
 Since nothing was explicitly specified, I've submitted a zipped folder that contains my `CupThrow` application as outlined and created via the documents and instructions we were provided. However, it uses the generated `.gitignore`, where I've also told it to ignore `/vendor`.
 
