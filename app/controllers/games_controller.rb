@@ -21,7 +21,7 @@ class GamesController < ApplicationController
 
     # Randomly determine goal as sum or tally result
     @goal_type = :summed
-    if rand(4) < 3
+    if rand(4) < 1
       @goal_type = :tallied
     end
 
