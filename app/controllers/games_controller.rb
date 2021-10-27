@@ -76,11 +76,16 @@ class GamesController < ApplicationController
 
     # Searches player bag based on goal description(s), loading their cup with matching items, then throws it
     # Then, get the player throw results and calculate sum/tally
+    goal_coin_descr_hash_no_up = current_goal_coin_descr_hash.clone
+    goal_die_descr_hash_no_up = current_goal_die_descr_hash.clone
+
     if current_goal_coin_descr_hash
-      @player.load(current_goal_coin_descr_hash)
+      goal_coin_descr_hash_no_up.delete(:up)
+      @player.load(goal_coin_descr_hash_no_up)
     end
     if current_goal_die_descr_hash
-      @player.load(current_goal_die_descr_hash)
+      goal_die_descr_hash_no_up.delete(:up)
+      @player.load(goal_die_descr_hash_no_up)
     end
     if !current_goal_coin_descr_hash && !current_goal_die_descr_hash
       @player.load
@@ -92,10 +97,12 @@ class GamesController < ApplicationController
     # Then, get the computer throw results and calculate sum/tally
     # todo mvb -make computer randomly select coins and dice from their bag for their throw
     if current_goal_coin_descr_hash
-      @cpu.load(current_goal_coin_descr_hash)
+      goal_coin_descr_hash_no_up.delete(:up)
+      @cpu.load(goal_coin_descr_hash_no_up)
     end
     if current_goal_die_descr_hash
-      @cpu.load(current_goal_die_descr_hash)
+      goal_die_descr_hash_no_up.delete(:up)
+      @cpu.load(goal_die_descr_hash_no_up)
     end
     if !current_goal_coin_descr_hash && !current_goal_die_descr_hash
       @cpu.load
@@ -105,16 +112,17 @@ class GamesController < ApplicationController
 
     # Determine who won, including messages to display, etc.
     # Properly calculate and display and increase earned points and gems based on the math, then save the user.
-    coin_descr_hash = current_goal_coin_descr_hash ? current_goal_coin_descr_hash : {}
-    die_descr_hash = current_goal_die_descr_hash ? current_goal_die_descr_hash : {}
     if @goal_type == :tallied
+      coin_descr_hash = current_goal_coin_descr_hash ? current_goal_coin_descr_hash : {}
+      die_descr_hash = current_goal_die_descr_hash ? current_goal_die_descr_hash : {}
+
       @results_descr = "Throw Tallies:"
       @player_score = @player.tally(coin_descr_hash)[0] + @player.tally(die_descr_hash)[0]
       @cpu_score = @cpu.tally(coin_descr_hash)[0] + @cpu.tally(die_descr_hash)[0]
     else # @goal_type == :summed
       @results_descr = "Throw Sums:"
-      @player_score = @player.sum(coin_descr_hash)[0] + @player.sum(die_descr_hash)[0]
-      @cpu_score =  @cpu.sum(coin_descr_hash)[0] + @cpu.sum(die_descr_hash)[0]
+      @player_score = @player.sum(goal_coin_descr_hash_no_up)[0] + @player.sum(goal_die_descr_hash_no_up)[0]
+      @cpu_score =  @cpu.sum(goal_coin_descr_hash_no_up)[0] + @cpu.sum(goal_die_descr_hash_no_up)[0]
     end
 
     if @player_score > @cpu_score
