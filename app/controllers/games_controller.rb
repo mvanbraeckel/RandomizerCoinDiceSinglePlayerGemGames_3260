@@ -94,16 +94,16 @@ class GamesController < ApplicationController
     @cpu = Player.new("cpu-#{current_user.username}")
     cpu_bag = @player.bag
 
-    # cpu_bag.randomizers.each do |item|
-    #   if rand(2) == 1
-    #     @cpu.store(item.clone)
-    #   end
-    # end
-    for item in cpu_bag.randomizers
+    cpu_bag.randomizers.each do |item|
       if rand(2) == 1
         @cpu.store(item.clone)
       end
     end
+    # for item in cpu_bag.randomizers
+    #   if rand(2) == 1
+    #     @cpu.store(item.clone)
+    #   end
+    # end
     # @cpu.move_all(cpu_bag)
 
     # if current_goal_coin_descr_hash
