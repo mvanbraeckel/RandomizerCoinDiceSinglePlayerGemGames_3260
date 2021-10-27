@@ -116,7 +116,7 @@ class GamesController < ApplicationController
     @player_score = 0
     @cpu_score = 0
     if @goal_type == :tallied
-      @results_descr = "Throw Tallies:"
+      @results_descr = "Tallies"
       if current_goal_coin_descr_hash
         @player_score += (current_goal_coin_descr_hash ? @player.tally(current_goal_coin_descr_hash)[0] : 0)
         @cpu_score += (current_goal_coin_descr_hash ? @cpu.tally(current_goal_coin_descr_hash)[0] : 0)
@@ -126,7 +126,7 @@ class GamesController < ApplicationController
         @cpu_score += (current_goal_die_descr_hash ? @cpu.tally(current_goal_die_descr_hash)[0] : 0)
       end
     else # @goal_type == :summed
-      @results_descr = "Throw Sums:"
+      @results_descr = "Sums"
       if current_goal_coin_descr_hash
         @player_score += (current_goal_coin_descr_hash ? @player.sum(goal_coin_descr_hash_no_up)[0] : 0)
         @cpu_score += (current_goal_coin_descr_hash ? @cpu.sum(goal_coin_descr_hash_no_up)[0] : 0)
