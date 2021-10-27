@@ -39,6 +39,7 @@ NOTE: I will say the URL of each page, but it's highly recommended to only navig
 
 Below please find general comments and statements, as well as an overview of everything I implemented with respect to A2 and how to get there
 
+* General source: https://www.railstutorial.org/book
 * General source: https://guides.rubyonrails.org/, especially https://guides.rubyonrails.org/getting_started.html
 * Referenced source for sign-in and user pages and functionality: https://carsonrcole.com/blog/posts/rolling-your-own-authentication-in-rails-5
   * additional referenced source: https://medium.com/@ashleymcolletti/add-authentication-to-your-rails-app-with-bcrypt-a53917252159
