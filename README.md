@@ -64,7 +64,7 @@ Below please find general comments and statements, as well as an overview of eve
     * can play a game, which goes to the initial game's landing page with rules, etc. and hidden goal description if they select to play game
     * can purchase items, which goes to a new form to choose characteristics of the item to be purchased
 * Purchase Items page
-  * For the form to buy a new item, go to `/purchase_items/new`
+  * For the form to buy a new item, go to `/purchase_items` (or `/purchase_items/new`)
     * also lists user email, points, and gems
     * fill in the form fields to select an error
       * has error checking and validation

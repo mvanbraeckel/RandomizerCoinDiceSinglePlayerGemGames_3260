@@ -58,7 +58,7 @@ class PurchaseItemsController < ApplicationController
           current_user.gems -= item_cost
           current_user.save
 
-          format.html { redirect_to new_purchase_item_path, notice: 'Item was successfully purchased.', alert: alert_text }
+          format.html { redirect_to purchaseitems_path, notice: 'Item was successfully purchased.', alert: alert_text }
           format.json { render :show, status: :created, location: @item }
         else
           format.html { render :new, alert: alert_text }
