@@ -96,6 +96,7 @@ class GamesController < ApplicationController
     end
     @player.throw
     @player_results = (current_goal_coin_descr_hash ? @player.results(goal_coin_descr_hash_no_up) : []) + (current_goal_die_descr_hash ? @player.results(goal_die_descr_hash_no_up) : [])
+    @player_bag_list = @player.bag.items_description
 
     # Computer also searches its bag based on goal description, loading its cup with matching items, then throws it
     # todo mvb -make computer randomly select coins and dice from their bag for their throw
