@@ -93,6 +93,7 @@ Below please find general comments and statements, as well as an overview of eve
     * can exit to the user's home page
     * can go back to the game's initial landing page
     * can play a game again without navigating back to the game's initial landing page
+      * Simply refreshing this page will start and execute/complete a new game (ie. with a new goal)
 * as a few extras, there's secret views/pages that can be accessed (while already signed in) as an admin/moderator view
   * can find it by going to `/users`
     * this shows all users with accounts, including options to show, edit, or destroy/delete each one
