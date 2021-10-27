@@ -14,11 +14,6 @@ class GamesController < ApplicationController
       end
     end
 
-    # Computer gets a duplicate bag (clone) with contents mirroring the player's
-    cpu_bag = @player.bag
-    @cpu = Player.new("cpu-#{current_user.username}")
-    @cpu.move_all(cpu_bag)
-
     # Randomly determine goal as sum or tally result
     @goal_type = :summed
     if rand(4) < 1
@@ -93,21 +88,35 @@ class GamesController < ApplicationController
     @player_results = (current_goal_coin_descr_hash ? @player.results(goal_coin_descr_hash_no_up) : []) + (current_goal_die_descr_hash ? @player.results(goal_die_descr_hash_no_up) : [])
 
     # Computer also searches its bag based on goal description, loading its cup with matching items, then throws it
-    # Then, get the computer throw results and calculate sum/tally
     # todo mvb -make computer randomly select coins and dice from their bag for their throw
-    if current_goal_coin_descr_hash
-      goal_coin_descr_hash_no_up = current_goal_coin_descr_hash.clone
-      goal_coin_descr_hash_no_up.delete(:up)
-      @cpu.load(goal_coin_descr_hash_no_up)
+    # Computer gets a duplicate bag (clone) with contents mirroring the player's
+    # Computer randomly selects a items to load for its throw (regardless of goal, like in assignment description. ie. cpu is not smart)
+    @cpu = Player.new("cpu-#{current_user.username}")
+    cpu_bag = @player.bag
+
+    for item in cpu_bag
+      if rand(2) == 1
+        @cpu.store(item.clone)
+      end
     end
-    if current_goal_die_descr_hash
-      goal_die_descr_hash_no_up = current_goal_die_descr_hash.clone
-      goal_die_descr_hash_no_up.delete(:up)
-      @cpu.load(goal_die_descr_hash_no_up)
-    end
-    if !current_goal_coin_descr_hash && !current_goal_die_descr_hash
-      @cpu.load
-    end
+    # @cpu.move_all(cpu_bag)
+
+    # if current_goal_coin_descr_hash
+    #   goal_coin_descr_hash_no_up = current_goal_coin_descr_hash.clone
+    #   goal_coin_descr_hash_no_up.delete(:up)
+    #   @cpu.load(goal_coin_descr_hash_no_up)
+    # end
+    # if current_goal_die_descr_hash
+    #   goal_die_descr_hash_no_up = current_goal_die_descr_hash.clone
+    #   goal_die_descr_hash_no_up.delete(:up)
+    #   @cpu.load(goal_die_descr_hash_no_up)
+    # end
+    # if !current_goal_coin_descr_hash && !current_goal_die_descr_hash
+    #   @cpu.load
+    # end
+
+    # Then, get the computer throw results and calculate sum/tally
+    @cpu.load
     @cpu.throw
     @cpu_results = (current_goal_coin_descr_hash ? @cpu.results(goal_coin_descr_hash_no_up) : []) + (current_goal_die_descr_hash ? @cpu.results(goal_die_descr_hash_no_up) : [])
 
