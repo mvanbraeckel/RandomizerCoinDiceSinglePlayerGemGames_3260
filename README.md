@@ -27,11 +27,13 @@ Things you may want to cover:
 
 * Author Name: Mitchell Van Braeckel
 * Email: mvanbrae@uoguelph.ca
-* Student ID: 1002297
+* Student ID Number: 1002297
 * Course: CIS*3260 Software Design IV
 * Assignment: Individual A2
+* Professor: Mark Wineberg
+* Language: Ruby on Rails
 * Brief: CupThrow Game - Play a Game with Coins and Dice against a computer to win gems, buy more items, and continue. Try to get a high score, it remembers your account.
-* Due: (Extended, Twice) Wed Oct 27, 2021
+* Due Date: (Extended, Twice) Wednesday, October 27, 2021
 
 ## General
 
