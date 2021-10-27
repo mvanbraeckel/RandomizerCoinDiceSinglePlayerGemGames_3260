@@ -15,4 +15,28 @@ class ApplicationController < ActionController::Base
       @current_user = nil
     end
   end
+
+  def current_goal_type
+    if session[:goal_type]
+      @current_goal_type ||= session[:goal_type]
+    else
+      @current_goal_type = nil
+    end
+  end
+
+  def current_goal_coin_descr_hash
+    if session[:goal_coin_descr_hash]
+      @current_goal_coin_descr_hash ||= session[:goal_coin_descr_hash]
+    else
+      @current_goal_coin_descr_hash = nil
+    end
+  end
+
+  def current_goal_die_descr_hash
+    if session[:goal_die_descr_hash]
+      @current_goal_die_descr_hash ||= session[:goal_die_descr_hash]
+    else
+      @current_goal_die_descr_hash = nil
+    end
+  end
 end

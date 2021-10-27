@@ -24,9 +24,15 @@
 
 <br>
 
-<h3>Simple Game Results</h3>
+<h3>Simple Game Results (not so simple anymore)</h3> <%# todo mvb -update this %>
 
-<p>Rolling all the player's items.</p>
+<p>
+  Goal Type: <%= current_goal_type == :tallied ? "Tally" : "Sum" %><br>
+  Coin Goal: <%= current_goal_coin_descr_hash ? current_goal_coin_descr_hash : "None" %><br>
+  Die Goal: <%= current_goal_die_descr_hash ? current_goal_die_descr_hash : "None" %>
+</p>
+
+<%# <p>Rolling all the player's items.</p> %>
 
 <table>
   <thead>
@@ -39,14 +45,14 @@
 
   <tbody>
     <tr>
-      <td><strong>Throw Roll Results:</strong></td>
+      <td><strong>Throw Results:</strong></td>
       <td><%= @player_results %></td>
       <td><%= @cpu_results %></td>
     </tr>
     <tr>
-      <td><strong>Throw Roll Totals:</strong></td>
-      <td><%= @player_sum %></td>
-      <td><%= @cpu_sum %></td>
+      <td><strong><%= @results_descr %></strong></td>
+      <td><%= @player_score %></td>
+      <td><%= @cpu_score %></td>
     </tr>
   </tbody>
 </table>

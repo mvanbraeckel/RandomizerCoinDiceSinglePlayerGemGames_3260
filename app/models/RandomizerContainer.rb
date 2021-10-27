@@ -44,7 +44,11 @@ class RandomizerContainer
 
     # Returns a copy of the randomizers in the container (so it isn't connected by reference, thus not breaking encapsulation)
     def randomizers
-        @randomizers.clone
+        cloned_randomizers = []
+        @randomizers.each do |r|
+            cloned_randomizers << r.clone
+        end
+        cloned_randomizers
     end
 
     # Returns if the given RandomizerContainer is equal to self
