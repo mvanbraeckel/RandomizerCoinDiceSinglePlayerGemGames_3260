@@ -104,7 +104,7 @@ class GamesController < ApplicationController
       end
     end
     cpu_random_items_list.each do |item|
-      @cpu.store(item.clone)
+      @cpu.store(item)
     end
     # for item in cpu_bag.randomizers
     #   if rand(2) == 1
