@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :items
   end
-  resources :purchase_items
+  resources :purchase_items, only: [:show, :new, :create]
   resources :games
 
   get "playgame", to: "games#playgame", as: "playgame"
