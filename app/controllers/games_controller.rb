@@ -66,8 +66,6 @@ class GamesController < ApplicationController
     session[:goal_coin_descr_hash] = @goal_coin_descr_hash
     session[:goal_die_descr_hash] = @goal_die_descr_hash
 
-    # todo mvb -will also need to change game index and playgame pages (and readme) to show that there's more to the game
-
     # Searches player bag based on goal description(s), loading their cup with matching items, then throws it
     # Then, get the player throw results and calculate sum/tally
     if current_goal_coin_descr_hash
