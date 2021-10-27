@@ -87,7 +87,7 @@ class GamesController < ApplicationController
     end
     @player.throw
     @player_results = (current_goal_coin_descr_hash ? @player.results(goal_coin_descr_hash_no_up) : []) + (current_goal_die_descr_hash ? @player.results(goal_die_descr_hash_no_up) : [])
-    @player_bag_list = @player.bag.items_description
+    # @player_bag_list = @player.bag.items_description
 
     # Computer gets a duplicate bag (clone) with contents mirroring the player's
     # but computer randomly selects a items to load for its throw (regardless of goal, like in assignment description. ie. cpu is not smart)
@@ -103,7 +103,7 @@ class GamesController < ApplicationController
     @cpu.load
     @cpu.throw
     @cpu_results = (current_goal_coin_descr_hash ? @cpu.results(goal_coin_descr_hash_no_up) : []) + (current_goal_die_descr_hash ? @cpu.results(goal_die_descr_hash_no_up) : [])
-    @cpu_bag_list = @cpu.bag.items_description
+    # @cpu_bag_list = @cpu.bag.items_description
 
     # Determine who won, including messages to display, etc.
     # Properly calculate and display and increase earned points and gems based on the math, then save the user.
