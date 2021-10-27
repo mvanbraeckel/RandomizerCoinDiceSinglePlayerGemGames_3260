@@ -37,8 +37,8 @@ class GamesController < ApplicationController
     # and add a random sideup field for tally goal type (via :up)
     # NOTE: Description example: {item: :coin, denomination: 0.25, up: :H}
     # NOTE: Description example: {item: :die, sides: 4, colour: :yellow, up: 4}
-    @goal_coin_descr_hash = {}
-    @goal_die_descr_hash = {}
+    @goal_coin_descr_hash = nil
+    @goal_die_descr_hash = nil
 
     if goal_coin_flag
       goal_coin = coins_list[rand(coins_list.length)]
@@ -76,14 +76,13 @@ class GamesController < ApplicationController
 
     # Searches player bag based on goal description(s), loading their cup with matching items, then throws it
     # Then, get the player throw results and calculate sum/tally
-    goal_coin_descr_hash_no_up = current_goal_coin_descr_hash.clone
-    goal_die_descr_hash_no_up = current_goal_die_descr_hash.clone
-
     if current_goal_coin_descr_hash
+      goal_coin_descr_hash_no_up = current_goal_coin_descr_hash.clone
       goal_coin_descr_hash_no_up.delete(:up)
       @player.load(goal_coin_descr_hash_no_up)
     end
     if current_goal_die_descr_hash
+      goal_die_descr_hash_no_up = current_goal_die_descr_hash.clone
       goal_die_descr_hash_no_up.delete(:up)
       @player.load(goal_die_descr_hash_no_up)
     end
@@ -91,16 +90,18 @@ class GamesController < ApplicationController
       @player.load
     end
     @player.throw
-    @player_results = @player.results
+    @player_results = (current_goal_coin_descr_hash ? @player.results(goal_coin_descr_hash_no_up) : []) + (current_goal_die_descr_hash ? @player.results(goal_die_descr_hash_no_up) : [])
 
     # Computer also searches its bag based on goal description, loading its cup with matching items, then throws it
     # Then, get the computer throw results and calculate sum/tally
     # todo mvb -make computer randomly select coins and dice from their bag for their throw
     if current_goal_coin_descr_hash
+      goal_coin_descr_hash_no_up = current_goal_coin_descr_hash.clone
       goal_coin_descr_hash_no_up.delete(:up)
       @cpu.load(goal_coin_descr_hash_no_up)
     end
     if current_goal_die_descr_hash
+      goal_die_descr_hash_no_up = current_goal_die_descr_hash.clone
       goal_die_descr_hash_no_up.delete(:up)
       @cpu.load(goal_die_descr_hash_no_up)
     end
@@ -108,21 +109,32 @@ class GamesController < ApplicationController
       @cpu.load
     end
     @cpu.throw
-    @cpu_results = @cpu.results
+    @cpu_results = (current_goal_coin_descr_hash ? @cpu.results(goal_coin_descr_hash_no_up) : []) + (current_goal_die_descr_hash ? @cpu.results(goal_die_descr_hash_no_up) : [])
 
     # Determine who won, including messages to display, etc.
     # Properly calculate and display and increase earned points and gems based on the math, then save the user.
+    @player_score = 0
+    @cpu_score = 0
     if @goal_type == :tallied
-      coin_descr_hash = current_goal_coin_descr_hash ? current_goal_coin_descr_hash : {}
-      die_descr_hash = current_goal_die_descr_hash ? current_goal_die_descr_hash : {}
-
       @results_descr = "Throw Tallies:"
-      @player_score = @player.tally(coin_descr_hash)[0] + @player.tally(die_descr_hash)[0]
-      @cpu_score = @cpu.tally(coin_descr_hash)[0] + @cpu.tally(die_descr_hash)[0]
+      if current_goal_coin_descr_hash
+        @player_score += (current_goal_coin_descr_hash ? @player.tally(current_goal_coin_descr_hash)[0] : 0)
+        @cpu_score += (current_goal_coin_descr_hash ? @cpu.tally(current_goal_coin_descr_hash)[0] : 0)
+      end
+      if current_goal_die_descr_hash
+        @player_score += (current_goal_die_descr_hash ? @player.tally(current_goal_die_descr_hash)[0] : 0)
+        @cpu_score += (current_goal_die_descr_hash ? @cpu.tally(current_goal_die_descr_hash)[0] : 0)
+      end
     else # @goal_type == :summed
       @results_descr = "Throw Sums:"
-      @player_score = @player.sum(goal_coin_descr_hash_no_up)[0] + @player.sum(goal_die_descr_hash_no_up)[0]
-      @cpu_score =  @cpu.sum(goal_coin_descr_hash_no_up)[0] + @cpu.sum(goal_die_descr_hash_no_up)[0]
+      if current_goal_coin_descr_hash
+        @player_score += (current_goal_coin_descr_hash ? @player.sum(goal_coin_descr_hash_no_up)[0] : 0)
+        @cpu_score += (current_goal_coin_descr_hash ? @cpu.sum(goal_coin_descr_hash_no_up)[0] : 0)
+      end
+      if current_goal_die_descr_hash
+        @player_score += (current_goal_die_descr_hash ? @player.sum(goal_die_descr_hash_no_up)[0] : 0)
+        @cpu_score += (current_goal_die_descr_hash ? @cpu.sum(goal_die_descr_hash_no_up)[0] : 0)
+      end
     end
 
     if @player_score > @cpu_score
