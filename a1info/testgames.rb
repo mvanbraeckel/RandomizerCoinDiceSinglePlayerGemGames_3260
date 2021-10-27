@@ -10,7 +10,7 @@
 # Description example: {item: :coin, denomination: 0.25, up: :H}
 # Description example: {item: :die, sides: 4, colour: :yellow, up: 4}
 
-# require "./A1_Classes.rb"
+require "./A1_Classes.rb"
 
 DIE_SIDES = [4, 6, 8, 10, 12, 20, 30, 100]
 
@@ -190,13 +190,96 @@ def test__dice_battle__naruto_vs_sasuke
     puts res_5 != nil ? "--PASS--" : "--FAIL--"
 end
 
-# ============== MAIN TEST HARNESS ==============
+# ================ EXTRA TESTING ================
+
+def test__bag_cloning
+    # Init necessary objects
+    p1 = Player.new("p1")
+    cpu = Player.new("cpu")
+
+    # Both ready their dice and coin
+    p1.store(Die.new(100, Die::COLOURS.sample))
+    p1.store(Die.new(20, Die::COLOURS.sample))
+    p1.store(Die.new(6, Die::COLOURS.sample))
+    p1.store(Coin.new(Coin::DENOMINATIONS.sample))
+
+    p1_bag_clone = p1.bag # Clone of p1 bag with same item contents
+    cpu.move_all(p1_bag_clone)
+
+    puts "\n=========== Bag Cloning ===========\n\n"
+    puts "p1 bag:\n#{p1.bag.print_items}"
+    puts "cpu bag:\n#{cpu.bag.print_items}"
+end
+
+def test__rc_randomizers_cloning
+    # Init necessary objects
+    p1 = Player.new("p1")
+
+    # Both ready their dice and coin
+    p1.store(Die.new(100, Die::COLOURS.sample))
+    p1.store(Coin.new(Coin::DENOMINATIONS.sample))
+
+    p1_bag_clone = p1.bag # Clone of p1 bag with same item contents
+    p1_items = p1.bag.randomizers
+    p1_popped_item = p1_items.pop
+
+    puts "\n===== RC Randomizers Cloning =====\n\n"
+    puts "p1 bag:\n#{p1.bag.print_items}"
+    puts "p1 bag items:\t\t#{p1.bag.randomizers}"
+    puts "p1 bag cloned items:\t#{p1_items}"
+    puts "p1 bag cloned items pop:\t#{p1_popped_item.print_item}"
+end
+
+def test__random_select_and_add_items_from_player1_to_player2
+    # Init necessary objects
+    p1 = Player.new("p1")
+    p2 = Player.new("p2")
+
+    # Both ready their dice and coin
+    p1.store(Die.new(100, Die::COLOURS.sample))
+    p1.store(Die.new(20, Die::COLOURS.sample))
+    p1.store(Die.new(6, Die::COLOURS.sample))
+    p1.store(Coin.new(Coin::DENOMINATIONS.sample))
+
+    p2_bag = p1.bag
+
+    p2_bag.randomizers.each do |item|
+        if rand(2) == 1
+            p2.store(item.clone)
+            next
+        end
+    end
+
+    p1.load({item: :die})
+    p1.throw
+    p2.load
+    p2.throw
+
+    puts "\n===== Random Select+AddItems from P1 bag to P2 bag =====\n\n"
+    puts "p1 bag:\n#{p1.bag.print_items}"
+    puts "p1 bag items:\t\t#{p1.bag.randomizers}"
+    puts "p2 bag:\n#{p2.bag.print_items}"
+    puts "p2 bag items:\t\t#{p2.bag.randomizers}"
+    puts "p1 (die) results:\n#{p1.results({item: :die})}"
+    puts "p2 (die) results:\n#{p2.results({item: :die})}"
+    puts "p1:\n#{p1.bag.items_description}"
+    puts "p2:\n#{p2.bag.items_description}"
+end
+
+# ===============================================
+# -------------- MAIN TEST HARNESS --------------
+# ===============================================
 
 # Runs the test harness and all tests
 def main_test_harness
     test__dnd_backstabber_attack
     test__bag_of_lost_coins_leads_to_lottery_ticket
     test__dice_battle__naruto_vs_sasuke
+
+    puts "\n----- Extra Testing -----\n\n"
+    test__bag_cloning
+    test__rc_randomizers_cloning
+    test__random_select_and_add_items_from_player1_to_player2
 end
 
 # ==================== MAIN ====================

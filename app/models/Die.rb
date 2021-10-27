@@ -69,6 +69,11 @@ class Die < Randomizer
     #     "#{super}, Sides=#{@sides}, Colour=#{@colour}"
     # end
 
+    # # Returns a Die physical clone with the same sides and colour
+    # def physical_clone
+    #     Die.new(@sides, @colour)
+    # end
+
     # Returns a string to print to show physical attribute info of the Die
     def print_item
         "#{super}, Sides=#{@sides}, Colour=#{@colour}"

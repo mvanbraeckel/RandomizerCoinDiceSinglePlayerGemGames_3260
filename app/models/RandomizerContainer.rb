@@ -66,6 +66,11 @@ class RandomizerContainer
     #     to_print.strip
     # end
 
+    # # Returns a Randomizer physical clone (but it doesn't have any physical attributes)
+    # def physical_clone
+    #     Randomizer.new()
+    # end
+
     # Returns a string to print that shows physical attribute info of all items
     def print_items
         to_print = ""

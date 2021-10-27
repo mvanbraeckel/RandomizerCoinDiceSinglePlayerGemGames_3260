@@ -74,6 +74,11 @@ class Coin < Randomizer
     #     "#{super}, Denomination=#{@denomination}"
     # end
 
+    # # Returns a Coin physical clone with the same denomination
+    # def physical_clone
+    #     c = Coin.new(@denomination)
+    # end
+
     # Returns a string to print to show physical attribute info of the Coin
     def print_item
         "#{super}, Denomination=#{@denomination}"
