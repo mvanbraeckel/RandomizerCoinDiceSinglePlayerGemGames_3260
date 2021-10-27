@@ -4,23 +4,14 @@ class GamesController < ApplicationController
 
   def playgame
     # Get all the user's items, make objects for each adding them to the player's bag (ignores bad items)
-    # # Computer gets a duplicate bag (clone) with contents mirroring the player's
-    # # but computer randomly selects a items to load for its throw (regardless of goal, like in assignment description. ie. cpu is not smart)
     @player = Player.new(current_user.username)
-    # @cpu = Player.new("cpu-#{current_user.username}")
 
     items = current_user.items
     for item in items
       if item.item == "coin" || item.item == :coin
         @player.store(Coin.new(item.denomination))
-        # if rand(2) == 1
-        #   @cpu.store(Coin.new(item.denomination))
-        # end
       elsif item.item == "die" || item.item == :die
         @player.store(Die.new(item.sides, item.colour.parameterize.underscore.to_sym))
-        # if rand(2) == 1
-        #   @cpu.store(Die.new(item.sides, item.colour.parameterize.underscore.to_sym))
-        # end
       end
     end
 
@@ -98,55 +89,15 @@ class GamesController < ApplicationController
     @player_results = (current_goal_coin_descr_hash ? @player.results(goal_coin_descr_hash_no_up) : []) + (current_goal_die_descr_hash ? @player.results(goal_die_descr_hash_no_up) : [])
     @player_bag_list = @player.bag.items_description
 
-    # Computer also searches its bag based on goal description, loading its cup with matching items, then throws it
-    # todo mvb -make computer randomly select coins and dice from their bag for their throw
     # Computer gets a duplicate bag (clone) with contents mirroring the player's
-    # Computer randomly selects a items to load for its throw (regardless of goal, like in assignment description. ie. cpu is not smart)
+    # but computer randomly selects a items to load for its throw (regardless of goal, like in assignment description. ie. cpu is not smart)
     @cpu = Player.new("cpu-#{current_user.username}")
     cpu_bag = @player.bag
-
-    # cpu_random_items_list = []
-    # @cpu_bag_list1 = []
-    # cpu_bag.randomizers.each do |item|
-    #   if rand(2) == 1
-    #     @cpu_bag_list1 << item.clone.item_description
-    #     cpu_random_items_list << item.clone
-    #     next
-    #   end
-    # end
-    # @cpu.store(Coin.new(0.05))
-    # while cpu_random_items_list.length > 0 do
-    #   item = cpu_random_items_list.shift
-    #   @cpu.store(item)
-    # end
-    # cpu_random_items_list.each do |item|
-    #   @cpu.store(item)
-    # end
-    # for item in cpu_random_items_list
-    #   if rand(2) == 1
-    #     @cpu.store(item)
-    #   end
-    # end
     for item in cpu_bag.randomizers
       if rand(2) == 1
         @cpu.store(item.clone)
       end
     end
-    # @cpu.move_all(cpu_bag)
-
-    # if current_goal_coin_descr_hash
-    #   goal_coin_descr_hash_no_up = current_goal_coin_descr_hash.clone
-    #   goal_coin_descr_hash_no_up.delete(:up)
-    #   @cpu.load(goal_coin_descr_hash_no_up)
-    # end
-    # if current_goal_die_descr_hash
-    #   goal_die_descr_hash_no_up = current_goal_die_descr_hash.clone
-    #   goal_die_descr_hash_no_up.delete(:up)
-    #   @cpu.load(goal_die_descr_hash_no_up)
-    # end
-    # if !current_goal_coin_descr_hash && !current_goal_die_descr_hash
-    #   @cpu.load
-    # end
 
     # Then, get the computer throw results and calculate sum/tally
     @cpu.load
