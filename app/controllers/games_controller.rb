@@ -94,7 +94,7 @@ class GamesController < ApplicationController
     @cpu = Player.new("cpu-#{current_user.username}")
     cpu_bag = @player.bag
     for item in cpu_bag.randomizers
-      if rand(10) < 8
+      if rand(20) < 19
         @cpu.store(item.clone)
       end
     end
