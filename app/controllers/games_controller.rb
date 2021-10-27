@@ -111,11 +111,11 @@ class GamesController < ApplicationController
 
     # Determine who won, including messages to display, etc.
     # Properly calculate and display and increase earned points and gems based on the math, then save the user.
-    if goal_type == :tallied
+    if @goal_type == :tallied
       @results_descr = "Throw Tallies:"
       @player_score = @player_tally
       @cpu_score = @cpu_tally
-    else # goal_type == :summed
+    else # @goal_type == :summed
       @results_descr = "Throw Sums:"
       @player_score = @player_sum
       @cpu_score = @cpu_sum
