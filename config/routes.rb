@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "playgame", to: "games#playgame", as: "playgame"
   # get "showgame", to: "games#show", as: "showgame"
-  get "purchase_items", to: "purchase_items#new", as: "purchase_items"
+  get "purchase_items", to: "purchase_items#new", as: "purchaseitems"
 
   get "signup", to: "users#new", as: "signup"
   get "login", to: "sessions#new", as: "login"
