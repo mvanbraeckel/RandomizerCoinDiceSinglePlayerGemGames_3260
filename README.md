@@ -152,3 +152,5 @@ Below please find general comments and statements, as well as an overview of eve
 * Submit your source code in a single zipped (or tarred) directory through CourseLink
 * Make sure your Rails server is running your website either at the time of submission, or when informed through CourseLink that the TAs have begun grading, until informed that grading has completed
 * The Rails application should be called "CupThrow"
+
+NOTE: Since nothing was explicitly specified, I've submitted a zipped folder that contains my `CupThrow` application as outlined and created via the documents and instructions we were provided. However, it uses the generated gitignore, where I've also told it to ignore `/vendor`.
