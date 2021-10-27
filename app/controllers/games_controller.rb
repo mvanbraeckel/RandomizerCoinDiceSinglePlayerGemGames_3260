@@ -103,9 +103,13 @@ class GamesController < ApplicationController
         next
       end
     end
-    cpu_random_items_list.each do |item|
+    while cpu_random_items_list.length > 0 do
+      item = cpu_random_items_list.shift
       @cpu.store(item)
     end
+    # cpu_random_items_list.each do |item|
+    #   @cpu.store(item)
+    # end
     # for item in cpu_bag.randomizers
     #   if rand(2) == 1
     #     @cpu.store(item.clone)

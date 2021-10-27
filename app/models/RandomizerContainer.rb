@@ -19,7 +19,7 @@ class RandomizerContainer
     # Stores a randomizer in the container
     def store(r)
         raise ArgumentError, "Randomizer '#{r}' is invalid - must be a Randomizer instance." unless r.is_a?(Randomizer)
-        @randomizers.append(r)
+        @randomizers << r
     end
 
     # Get each randomizer in the given contained & store it in self (without emptying the container's randomizers)
