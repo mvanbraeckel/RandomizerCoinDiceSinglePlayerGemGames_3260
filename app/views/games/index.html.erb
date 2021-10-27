@@ -24,18 +24,20 @@
 
 <br>
 
-<h2>Simple Game Rules (not so simple anymore)</h2> <%# todo mvb -update this %>
+<h2>Game Rules</h2>
 
-<p>The goal is all items, both coins and dice, where the sum total of all rolls in the throws will be calculated. The computer will make an identical throw.</p>
-<p>If you win, you will earn points equal to your winning score multipled by the number of items used in your throw and divided by the total number of items in all throws.
-In this simple game, this multiplication factor will always equal 1. You also earn gems equal to half the amount of points you earn.</p>
+<p>There will be goal randomly generated based on the items you have in the form of descriptions. This goal may related to coins, dice or both and it will determine if scores are calculated based on the sum or tally of rolls in the throws that match this goal.
+The computer has the same items as you and will also be scored against the same goal descriptions; however, they will be randomly selecting the items they throw instead of making an optimized throw like you will.</p>
+<br>
+<p>If you win, you will earn points equal to the difference of your winning score and the computer's score after it has been multipled by a factor equal to the number of items used in your throw and divided by the total number of items in all throws.
+In this game, this multiplication factor will always equal 1 because you make one optimized throw each game before the winner is determined. You also earn gems equal to half the amount of points you earn.</p>
 <p>If you lose, there's no penalty.</p>
 <br>
-<p>You can spend gems to purchase new items, such as coins of various denominations, and any-sided dice of various colours.</p>
+<p>You can spend gems to purchase new items, such as coins of various denominations and any-sided dice of various colours.</p>
 
 <hr>
 
-<p>Computer sets game goal: <strong>Simple Game</strong></p>
+<p>Computer sets a random game goal: <strong>HIDDEN</strong> <i>('Play Game' to see the game goal)</i></p> <%# todo mvb -update this %>
 
 <%= link_to 'Exit', root_path %> |
 <%= link_to 'Play Game', playgame_path %>
